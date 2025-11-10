@@ -15,13 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const STORAGE_FILE = path.join(__dirname, "lastVisitor.json");
 
-// Serve your static site from a "public" folder
-app.use(express.static(path.join(__dirname, "public")));
-
-// Also serve static files from the root directory (for CSS, JS, etc.)
-app.use(express.static(__dirname));
-
-// Clean URL routes
+// Clean URL routes - define before static middleware
 app.get("/mues-ai", (req, res) => {
   res.sendFile(path.join(__dirname, "mues-ai.html"));
 });
@@ -37,6 +31,28 @@ app.get("/producter", (req, res) => {
 app.get("/heybooster", (req, res) => {
   res.sendFile(path.join(__dirname, "heybooster.html"));
 });
+
+app.get("/about", (req, res) => {
+  res.sendFile(path.join(__dirname, "about.html"));
+});
+
+app.get("/photos", (req, res) => {
+  res.sendFile(path.join(__dirname, "photos.html"));
+});
+
+app.get("/resources", (req, res) => {
+  res.sendFile(path.join(__dirname, "resources.html"));
+});
+
+app.get("/books", (req, res) => {
+  res.sendFile(path.join(__dirname, "books.html"));
+});
+
+// Serve your static site from a "public" folder
+app.use(express.static(path.join(__dirname, "public")));
+
+// Also serve static files from the root directory (for CSS, JS, etc.)
+app.use(express.static(__dirname));
 
 // Legacy routes for backward compatibility
 app.get("/paradox", (req, res) => {

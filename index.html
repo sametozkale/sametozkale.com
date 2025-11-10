@@ -91,14 +91,17 @@
         pointer-events: auto !important;
       }
       .selections-slider-btn:hover {
-        background: rgba(255, 255, 255, 1) !important;
-        border-color: #cbd5e1 !important;
+        background: rgba(255, 255, 255, 0.85) !important;
+        border-color: rgba(229, 231, 235, 0.7) !important;
+      }
+      .selections-slider-btn:hover svg path {
+        opacity: 0.9 !important;
       }
       .selections-dot:hover {
         background: #cbd5e1 !important;
       }
       .selections-dot.active {
-        background: #94a3b8 !important;
+        background: #dddddd !important;
         width: 24px !important;
       }
       .link-with-logo {
@@ -126,6 +129,151 @@
       }
       .link-with-logo:hover a {
         padding-left: 20px;
+      }
+      .bottom-nav {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 1px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 999px;
+        padding: 3px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        z-index: 1000;
+      }
+      .bottom-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        text-decoration: none;
+        color: #777;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        transform: scale(1);
+        opacity: 0.8;
+        transform-origin: center;
+      }
+      .bottom-nav-item:first-child {
+        transform-origin: left center;
+      }
+      .bottom-nav-item:last-child {
+        transform-origin: right center;
+      }
+      .bottom-nav-item svg {
+        color: #ddd;
+        transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .bottom-nav-item:hover {
+        background: #f5f5f5;
+        color: #0089FF;
+        transform: scale(1.05);
+        opacity: 1;
+      }
+      .bottom-nav-item:first-child:hover {
+        transform: scale(1.05);
+        transform-origin: left center;
+      }
+      .bottom-nav-item:last-child:hover {
+        transform: scale(1.05);
+        transform-origin: right center;
+      }
+      .bottom-nav-item:hover svg {
+        color: #0089FF;
+      }
+      .bottom-nav-item:hover .nav-text {
+        display: inline;
+        animation: fadeIn 0.3s ease;
+        font-size: 14px;
+        transform: scale(1);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateX(-4px) scale(1);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+      }
+      .bottom-nav-item.active {
+        background: #f5f5f5;
+        color: #0089FF;
+        transform: scale(1);
+        opacity: 1;
+      }
+      .bottom-nav-item.active svg {
+        color: #0089FF;
+      }
+      .bottom-nav-item.active .nav-text {
+        display: inline;
+        font-size: 14px;
+      }
+      .bottom-nav-item .nav-text {
+        display: none;
+        font-size: 14px;
+      }
+      .bottom-nav-icon {
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @media (max-width: 640px) {
+        .bottom-nav {
+          gap: 1px;
+          padding: 3px;
+        }
+        .bottom-nav-item {
+          padding: 6px 8px;
+          font-size: 12px;
+        }
+        .bottom-nav-item .nav-text {
+          font-size: 12px;
+        }
+        .bottom-nav-item:hover .nav-text {
+          font-size: 12px;
+        }
+        .bottom-nav-item.active .nav-text {
+          font-size: 12px;
+        }
+      }
+      
+      /* Footer Responsive Styles */
+      @media (max-width: 768px) {
+        .footer-header {
+          flex-direction: column;
+          align-items: flex-start !important;
+        }
+        .footer-columns {
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 32px 24px !important;
+        }
+      }
+      @media (max-width: 480px) {
+        .footer-columns {
+          grid-template-columns: 1fr !important;
+          gap: 32px !important;
+        }
+        footer {
+          padding-top: 48px !important;
+          padding-bottom: 48px !important;
+        }
+        .footer-header {
+          margin-bottom: 32px !important;
+        }
+        .footer-columns {
+          margin-bottom: 32px !important;
+        }
       }
     </style>
     <title>Samet Özkale — Product Designer & Entrepreneur</title>
@@ -224,15 +372,15 @@
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
                 class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16/9;"
-                src="public/assets/mues-aiThumbnail.jpg"
+                style="border-radius: 16px; width: 100%; height: auto; display: block;"
+                src="public/assets/mues-ai/Mues 1.png"
                 alt="Selection 1"
               />
             </div>
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
                 class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16/9;"
+                style="border-radius: 16px; width: 100%; height: auto; display: block;"
                 src="public/assets/roadmapeThumbnail.jpg"
                 alt="Selection 2"
               />
@@ -240,7 +388,7 @@
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
                 class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16/9;"
+                style="border-radius: 16px; width: 100%; height: auto; display: block;"
                 src="public/assets/producterThumbnail.jpg"
                 alt="Selection 3"
               />
@@ -248,7 +396,7 @@
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
                 class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16/9;"
+                style="border-radius: 16px; width: 100%; height: auto; display: block;"
                 src="public/assets/heyboosterThumbnail.jpg"
                 alt="Selection 4"
               />
@@ -256,7 +404,7 @@
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
                 class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16/9;"
+                style="border-radius: 16px; width: 100%; height: auto; display: block;"
                 src="public/assets/mues-aiThumbnail.jpg"
                 alt="Selection 5"
               />
@@ -264,7 +412,7 @@
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
                 class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16/9;"
+                style="border-radius: 16px; width: 100%; height: auto; display: block;"
                 src="public/assets/roadmapeThumbnail.jpg"
                 alt="Selection 6"
               />
@@ -272,30 +420,30 @@
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
                 class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16/9;"
+                style="border-radius: 16px; width: 100%; height: auto; display: block;"
                 src="public/assets/producterThumbnail.jpg"
                 alt="Selection 7"
               />
             </div>
           </div>
-          <button class="selections-slider-btn selections-slider-prev" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); border: 1px solid #e5e7eb; border-radius: 50%; width: 40px; height: 40px; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: all 0.2s ease; opacity: 0; pointer-events: none;" aria-label="Previous">
+          <button class="selections-slider-btn selections-slider-prev" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(229, 231, 235, 0.5); border-radius: 50%; width: 40px; height: 40px; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: all 0.2s ease; opacity: 0; pointer-events: none;" aria-label="Previous">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
             </svg>
           </button>
-          <button class="selections-slider-btn selections-slider-next" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); border: 1px solid #e5e7eb; border-radius: 50%; width: 40px; height: 40px; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: all 0.2s ease; opacity: 0; pointer-events: none;" aria-label="Next">
+          <button class="selections-slider-btn selections-slider-next" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(229, 231, 235, 0.5); border-radius: 50%; width: 40px; height: 40px; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: all 0.2s ease; opacity: 0; pointer-events: none;" aria-label="Next">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
             </svg>
           </button>
           <div class="selections-slider-dots" style="display: flex; justify-content: center; gap: 6px; margin-top: 16px;">
-            <button class="selections-dot active" data-slide="0" style="width: 24px; height: 6px; border-radius: 3px; border: none; background: #94a3b8; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 1"></button>
-            <button class="selections-dot" data-slide="1" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #e2e8f0; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 2"></button>
-            <button class="selections-dot" data-slide="2" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #e2e8f0; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 3"></button>
-            <button class="selections-dot" data-slide="3" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #e2e8f0; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 4"></button>
-            <button class="selections-dot" data-slide="4" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #e2e8f0; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 5"></button>
-            <button class="selections-dot" data-slide="5" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #e2e8f0; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 6"></button>
-            <button class="selections-dot" data-slide="6" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #e2e8f0; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 7"></button>
+            <button class="selections-dot active" data-slide="0" style="width: 24px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 1"></button>
+            <button class="selections-dot" data-slide="1" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 2"></button>
+            <button class="selections-dot" data-slide="2" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 3"></button>
+            <button class="selections-dot" data-slide="3" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 4"></button>
+            <button class="selections-dot" data-slide="4" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 5"></button>
+            <button class="selections-dot" data-slide="5" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 6"></button>
+            <button class="selections-dot" data-slide="6" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 7"></button>
           </div>
         </div>
       </div>
@@ -313,7 +461,7 @@
             class="inline-block w-full no-underline text-inherit"
           >
             <h2 class="text-lg sm:text-xl text-slate-900 font-medium" style="margin-bottom: 12px;">
-              Co-founder (Design Lead) at Mues AI
+              Mues AI
             </h2>
             <p class="text-base leading-relaxed" style="color: #777; margin-bottom: 12px;">
               Built the first agentic AI cursor for human software interaction. Led product strategy and design for agentic AI cursor technology that transforms user interaction with software applications. Created domain-specific AI agents capable of performing complex user actions.
@@ -432,8 +580,8 @@
       </div>
 
       <!-- Footer -->
-      <footer class="mx-auto max-w-prose py-16" style="margin-top: 64px;">
-        <div class="mb-12" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <footer class="mx-auto max-w-prose py-16" style="margin-top: 96px;">
+        <div class="footer-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; margin-bottom: 48px;">
           <div>
             <h3 class="text-lg font-medium text-slate-900 mb-3">Samet Özkale</h3>
             <p class="text-sm leading-relaxed" style="color: #777;">
@@ -454,9 +602,9 @@
           </a>
         </div>
         
-        <div style="display: flex; flex-wrap: wrap; gap: 60px; margin-bottom: 48px;">
+        <div class="footer-columns" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px 32px; margin-bottom: 48px;">
           <div>
-            <h4 class="text-sm font-medium text-slate-900" style="margin-top: 48px; margin-bottom: 12px;">Work</h4>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">Work</h4>
             <ul class="space-y-3">
               <li>
                 <a href="/mues-ai" class="text-sm transition-colors" style="color: #777;">Mues AI</a>
@@ -474,7 +622,40 @@
           </div>
           
           <div>
-            <h4 class="text-sm font-medium text-slate-900" style="margin-top: 48px; margin-bottom: 12px;">Connect</h4>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">About</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="/about" class="text-sm transition-colors" style="color: #777;">About</a>
+              </li>
+              <li>
+                <a href="https://cal.com/sametozkale/meetwithme" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">Work with me</a>
+              </li>
+              <li>
+                <a href="/cv.md" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">CV</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">Resources</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="/resources" class="text-sm transition-colors" style="color: #777;">Resources</a>
+              </li>
+              <li>
+                <a href="/photos" class="text-sm transition-colors" style="color: #777;">Photos</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7001170854449438720" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">Newsletter</a>
+              </li>
+              <li>
+                <a href="/books" class="text-sm transition-colors" style="color: #777;">Books</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">Connect</h4>
             <ul class="space-y-3">
               <li>
                 <a href="mailto:ozkalesamet@gmail.com" class="text-sm transition-colors" style="color: #777;">Email</a>
@@ -487,30 +668,6 @@
               </li>
               <li>
                 <a href="https://layers.to/samet" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">Portfolio</a>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 class="text-sm font-medium text-slate-900" style="margin-top: 48px; margin-bottom: 12px;">Resources</h4>
-            <ul class="space-y-3">
-              <li>
-                <a href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7001170854449438720" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">Newsletter</a>
-              </li>
-              <li>
-                <a href="/cv.md" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">CV</a>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 class="text-sm font-medium text-slate-900" style="margin-top: 48px; margin-bottom: 12px;">About</h4>
-            <ul class="space-y-3">
-              <li>
-                <a href="https://cal.com/sametozkale/meetwithme" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">Work with me</a>
-              </li>
-              <li>
-                <a href="mailto:ozkalesamet@gmail.com" class="text-sm transition-colors" style="color: #777;">Contact</a>
               </li>
             </ul>
           </div>
@@ -599,11 +756,11 @@
             if (index === currentSlide) {
               dot.classList.add('active');
               dot.style.width = '24px';
-              dot.style.background = '#94a3b8';
+              dot.style.background = '#dddddd';
             } else {
               dot.classList.remove('active');
               dot.style.width = '6px';
-              dot.style.background = '#e2e8f0';
+              dot.style.background = '#dddddd';
             }
           });
           
@@ -655,6 +812,95 @@
         // Initialize
         updateSlider();
         startAutoSlide();
+      })();
+    </script>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="/" class="bottom-nav-item active" data-page="home">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="14" height="14" rx="4" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Home</span>
+      </a>
+      <a href="/about" class="bottom-nav-item" data-page="about">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="7" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">About</span>
+      </a>
+      <a href="/photos" class="bottom-nav-item" data-page="photos">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="14" height="14" rx="4" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Photos</span>
+      </a>
+      <a href="/resources" class="bottom-nav-item" data-page="resources">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="7" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Resources</span>
+      </a>
+      <a href="/books" class="bottom-nav-item" data-page="books">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="7" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Books</span>
+      </a>
+    </nav>
+
+    <script>
+      // Set active page based on current URL and update icons
+      (function() {
+        const currentPath = window.location.pathname;
+        const navItems = document.querySelectorAll('.bottom-nav-item');
+        
+        navItems.forEach(item => {
+          const href = item.getAttribute('href');
+          const page = item.getAttribute('data-page');
+          const iconSpan = item.querySelector('.bottom-nav-icon');
+          
+          // Remove active class from all items
+          item.classList.remove('active');
+          
+          // Determine if this item is active
+          let isActive = false;
+          if (currentPath === '/' && page === 'home') {
+            isActive = true;
+            item.classList.add('active');
+          } else if (currentPath === '/about' && page === 'about') {
+            isActive = true;
+            item.classList.add('active');
+          } else if (currentPath === '/photos' && page === 'photos') {
+            isActive = true;
+            item.classList.add('active');
+          } else if (currentPath === '/resources' && page === 'resources') {
+            isActive = true;
+            item.classList.add('active');
+          } else if (currentPath === '/books' && page === 'books') {
+            isActive = true;
+            item.classList.add('active');
+          }
+          
+          // Update icon: square for active, circle for inactive
+          if (iconSpan) {
+            if (isActive) {
+              iconSpan.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="14" height="14" rx="4" fill="currentColor"/></svg>';
+            } else {
+              iconSpan.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="7" fill="currentColor"/></svg>';
+            }
+          }
+        });
       })();
     </script>
   </body>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-QBD8DZ6W9Y"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-QBD8DZ6W9Y");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="output.css" rel="stylesheet" />
+    <style>
+      html {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
+      a:hover {
+        color: #0089FF !important;
+      }
+      .book-call-button:hover {
+        color: white !important;
+      }
+      .book-call-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 12px;
+        height: 32px;
+        font-size: 14px;
+        font-weight: 500;
+        color: white;
+        background-color: #0089FF;
+        border: 1px solid #0089FF;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .link-with-logo {
+        position: relative;
+        display: inline;
+      }
+      .link-logo {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        pointer-events: none;
+        border-radius: 2px;
+      }
+      .link-with-logo:hover .link-logo {
+        opacity: 1;
+      }
+      .link-with-logo a {
+        transition: padding-left 0.2s ease;
+        padding-left: 0;
+      }
+      .link-with-logo:hover a {
+        padding-left: 20px;
+      }
+      .timeline {
+        margin-top: 0;
+      }
+      .timeline-item {
+        display: flex;
+        gap: 24px;
+        margin-bottom: 16px;
+        align-items: baseline;
+        padding: 0;
+      }
+      .timeline-date {
+        font-size: 14px;
+        color: #979797;
+        min-width: 90px;
+        font-variant-numeric: tabular-nums;
+        font-family: "Chivo Mono", monospace;
+        font-weight: 300;
+        line-height: 1.6;
+        flex-shrink: 0;
+      }
+      .timeline-content {
+        flex: 1;
+        font-size: 14px;
+        color: #777;
+        line-height: 1.6;
+      }
+      @media (max-width: 640px) {
+        .timeline-item {
+          flex-direction: column;
+          gap: 4px;
+          margin-bottom: 20px;
+        }
+        .timeline-date {
+          min-width: auto;
+        }
+      }
+      .bottom-nav {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 1px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 999px;
+        padding: 3px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        z-index: 1000;
+      }
+      .bottom-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        text-decoration: none;
+        color: #777;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        transform: scale(1);
+        opacity: 0.8;
+        transform-origin: center;
+      }
+      .bottom-nav-item:first-child {
+        transform-origin: left center;
+      }
+      .bottom-nav-item:last-child {
+        transform-origin: right center;
+      }
+      .bottom-nav-item svg {
+        color: #ddd;
+        transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .bottom-nav-item:hover {
+        background: #f5f5f5;
+        color: #0089FF;
+        transform: scale(1.05);
+        opacity: 1;
+      }
+      .bottom-nav-item:first-child:hover {
+        transform: scale(1.05);
+        transform-origin: left center;
+      }
+      .bottom-nav-item:last-child:hover {
+        transform: scale(1.05);
+        transform-origin: right center;
+      }
+      .bottom-nav-item:hover svg {
+        color: #0089FF;
+      }
+      .bottom-nav-item:hover .nav-text {
+        display: inline;
+        animation: fadeIn 0.3s ease;
+        font-size: 14px;
+        transform: scale(1);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateX(-4px) scale(1);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+      }
+      .bottom-nav-item.active {
+        background: #f5f5f5;
+        color: #0089FF;
+        transform: scale(1);
+        opacity: 1;
+      }
+      .bottom-nav-item.active svg {
+        color: #0089FF;
+      }
+      .bottom-nav-item.active .nav-text {
+        display: inline;
+        font-size: 14px;
+      }
+      .bottom-nav-item .nav-text {
+        display: none;
+        font-size: 14px;
+      }
+      .bottom-nav-icon {
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @media (max-width: 640px) {
+        .bottom-nav {
+          gap: 1px;
+          padding: 3px;
+        }
+        .bottom-nav-item {
+          padding: 6px 8px;
+          font-size: 12px;
+        }
+        .bottom-nav-item .nav-text {
+          font-size: 12px;
+        }
+        .bottom-nav-item:hover .nav-text {
+          font-size: 12px;
+        }
+        .bottom-nav-item.active .nav-text {
+          font-size: 12px;
+        }
+      }
+      
+      /* Footer Responsive Styles */
+      @media (max-width: 768px) {
+        .footer-header {
+          flex-direction: column;
+          align-items: flex-start !important;
+        }
+        .footer-columns {
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 32px 24px !important;
+        }
+      }
+      @media (max-width: 480px) {
+        .footer-columns {
+          grid-template-columns: 1fr !important;
+          gap: 32px !important;
+        }
+        footer {
+          padding-top: 48px !important;
+          padding-bottom: 48px !important;
+        }
+        .footer-header {
+          margin-bottom: 32px !important;
+        }
+        .footer-columns {
+          margin-bottom: 32px !important;
+        }
+      }
+    </style>
+    <title>About - Samet Özkale</title>
+    <link
+      rel="icon"
+      href="https://sametozkale.com/public/assets/favicon.png"
+      type="favicon"
+    />
+    <meta
+      name="description"
+      content="About Samet Özkale - Product Designer & Entrepreneur"
+    />
+    <meta
+      property="og:title"
+      content="About - Samet Özkale"
+    />
+    <meta
+      property="og:description"
+      content="About Samet Özkale - Product Designer & Entrepreneur"
+    />
+    <meta
+      property="og:image"
+      content="https://sametozkale.com/public/assets/og.jpg"
+    />
+    <meta property="og:url" content="https://sametozkale.com/about" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <div id="scroll-container" class="bg-white" style="padding-top: 0; padding-bottom: 96px; padding-left: 24px; padding-right: 24px;">
+      <!-- Info Section -->
+      <div class="prose mx-auto max-w-prose" style="margin-top: 96px;">
+        <h1 class="text-2xl sm:text-3xl text-slate-900 font-medium mb-8" style="font-size: 20px;">
+          About me
+        </h1>
+        <p class="text-base leading-relaxed" style="color: #777;">
+          I'm a senior product designer and entrepreneur with 9+ years of experience in building AI agents, SaaS products, and leading cross-functional teams. I exercise transparent leadership, empower others, and make data-informed decisions.
+        </p>
+        <p class="text-base leading-relaxed" style="color: #777; margin-top: 24px;">
+          Currently building something new at
+          <span class="link-with-logo">
+            <img src="https://mues.ai/favicon.ico" alt="Mues AI" class="link-logo" />
+            <a
+              href="https://mues.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline hover:text-slate-500"
+              >Mues AI</a
+            >
+          </span>
+          as Co-founder, AI & Design Lead, working on agentic AI cursor technology that transforms user interactions with software products.
+        </p>
+        <p class="text-base leading-relaxed" style="color: #777; margin-top: 24px;">
+          Also sharing insights through my newsletter
+          <span class="link-with-logo">
+            <img src="https://substackcdn.com/image/fetch/$s_!C67Q!,w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa75a6a16-503b-442f-b0b1-3421007b8ccc_600x600.png" alt="AI for Product Power" class="link-logo" />
+            <a
+              href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7001170854449438720"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline hover:text-slate-500"
+              >AI for Product Power</a
+            >
+          </span>, helping over 3300 product managers and executives.
+        </p>
+        <div style="margin-top: 24px;">
+          <a 
+            href="https://cal.com/sametozkale/meetwithme" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="book-call-button"
+          >
+            Meet with me
+          </a>
+        </div>
+      </div>
+
+      <!-- Timeline Section -->
+      <div class="prose mx-auto max-w-prose" style="margin-top: 64px;">
+        <h2 class="text-xl sm:text-2xl text-slate-900 font-medium mb-8">History</h2>
+      </div>
+      <div class="prose mx-auto max-w-prose timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">10.25.25</div>
+          <div class="timeline-content">Co-founded Mues AI as Design Lead</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">09.24.25</div>
+          <div class="timeline-content">Pivoted from Producter to Roadmape</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">01.22.22</div>
+          <div class="timeline-content">Co-founded Producter, achieved 3500+ users from 18 different time zones.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">05.24.24</div>
+          <div class="timeline-content">Joined Heybooster as Product & Design Advisor</div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="mx-auto max-w-prose py-16" style="margin-top: 96px;">
+        <div class="footer-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; margin-bottom: 48px;">
+          <div>
+            <h3 class="text-lg font-medium text-slate-900 mb-3">Samet Özkale</h3>
+            <p class="text-sm leading-relaxed" style="color: #777;">
+              Product Designer & Entrepreneur
+            </p>
+            <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+              Creating meaningful and purpose-driven products and designs.
+            </p>
+          </div>
+          <a 
+            href="https://cal.com/sametozkale/meetwithme" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="book-call-button"
+            style="flex-shrink: 0;"
+          >
+            Work with me
+          </a>
+        </div>
+        
+        <div class="footer-columns" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px 32px; margin-bottom: 48px;">
+          <div>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">Work</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="/mues-ai" class="text-sm transition-colors" style="color: #777;">Mues AI</a>
+              </li>
+              <li>
+                <a href="/roadmape" class="text-sm transition-colors" style="color: #777;">Roadmape</a>
+              </li>
+              <li>
+                <a href="/producter" class="text-sm transition-colors" style="color: #777;">Producter</a>
+              </li>
+              <li>
+                <a href="/heybooster" class="text-sm transition-colors" style="color: #777;">Heybooster</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">About</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="/about" class="text-sm transition-colors" style="color: #777;">About</a>
+              </li>
+              <li>
+                <a href="https://cal.com/sametozkale/meetwithme" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">Work with me</a>
+              </li>
+              <li>
+                <a href="/cv.md" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">CV</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">Resources</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="/resources" class="text-sm transition-colors" style="color: #777;">Resources</a>
+              </li>
+              <li>
+                <a href="/photos" class="text-sm transition-colors" style="color: #777;">Photos</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7001170854449438720" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">Newsletter</a>
+              </li>
+              <li>
+                <a href="/books" class="text-sm transition-colors" style="color: #777;">Books</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">Connect</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="mailto:ozkalesamet@gmail.com" class="text-sm transition-colors" style="color: #777;">Email</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/sametozkale" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">LinkedIn</a>
+              </li>
+              <li>
+                <a href="https://x.com/sametozkale" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">X / Twitter</a>
+              </li>
+              <li>
+                <a href="https://layers.to/samet" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">Portfolio</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="pt-8 border-t border-gray-200">
+          <p class="text-sm" style="color: #777;">© Samet Özkale 2025 · Made with love.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="/" class="bottom-nav-item" data-page="home">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="14" height="14" rx="4" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Home</span>
+      </a>
+      <a href="/about" class="bottom-nav-item active" data-page="about">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="7" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">About</span>
+      </a>
+      <a href="/photos" class="bottom-nav-item" data-page="photos">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="14" height="14" rx="4" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Photos</span>
+      </a>
+      <a href="/resources" class="bottom-nav-item" data-page="resources">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="7" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Resources</span>
+      </a>
+      <a href="/books" class="bottom-nav-item" data-page="books">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="7" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Books</span>
+      </a>
+    </nav>
+
+    <script>
+      // Set active page based on current URL and update icons
+      (function() {
+        const currentPath = window.location.pathname;
+        const navItems = document.querySelectorAll('.bottom-nav-item');
+        
+        navItems.forEach(item => {
+          const href = item.getAttribute('href');
+          const page = item.getAttribute('data-page');
+          const iconSpan = item.querySelector('.bottom-nav-icon');
+          
+          // Remove active class from all items
+          item.classList.remove('active');
+          
+          // Determine if this item is active
+          let isActive = false;
+          if (currentPath === '/' && page === 'home') {
+            isActive = true;
+            item.classList.add('active');
+          } else if (currentPath === '/about' && page === 'about') {
+            isActive = true;
+            item.classList.add('active');
+          } else if (currentPath === '/photos' && page === 'photos') {
+            isActive = true;
+            item.classList.add('active');
+          } else if (currentPath === '/resources' && page === 'resources') {
+            isActive = true;
+            item.classList.add('active');
+          } else if (currentPath === '/books' && page === 'books') {
+            isActive = true;
+            item.classList.add('active');
+          }
+          
+          // Update icon: square for active, circle for inactive
+          if (iconSpan) {
+            if (isActive) {
+              iconSpan.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="14" height="14" rx="4" fill="currentColor"/></svg>';
+            } else {
+              iconSpan.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="7" fill="currentColor"/></svg>';
+            }
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
+
