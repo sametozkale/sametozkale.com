@@ -25,9 +25,36 @@
     />
     <link href="output.css" rel="stylesheet" />
     <style>
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Regular.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Semibold.otf') format('opentype');
+        font-weight: 600;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+      }
       html {
         font-family: "Inter", sans-serif;
         scroll-behavior: smooth;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Open Runde', sans-serif;
       }
       .project-image {
         transition: transform 0.3s ease;
@@ -49,12 +76,16 @@
         height: 32px;
         font-size: 14px;
         font-weight: 500;
+        font-family: 'Open Runde', sans-serif;
         color: white;
         background-color: #0089FF;
         border: 1px solid #0089FF;
         border-radius: 8px;
         cursor: pointer;
         text-decoration: none;
+      }
+      button {
+        font-family: 'Open Runde', sans-serif;
       }
       .availability-badge {
         display: inline-flex;
@@ -155,6 +186,7 @@
         color: #777;
         font-size: 14px;
         font-weight: 500;
+        font-family: 'Open Runde', sans-serif;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         white-space: nowrap;
         transform: scale(1);
@@ -348,9 +380,9 @@
               target="_blank"
               rel="noopener noreferrer"
               class="underline hover:text-slate-500"
-              >AI for Product Power</a
+              >AI for Product Power,</a
             >
-          </span>, helping over 3300 product managers and executives.
+          </span> helping over 3300 product managers and executives.
         </p>
         <div style="margin-top: 24px;">
           <a 
@@ -371,58 +403,90 @@
           <div class="selections-slider-wrapper" style="display: flex; transition: transform 0.5s ease;">
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
-                class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block;"
+                class="border selections-slider-image"
+                style="border-color: #eeeeee; border-radius: 16px; width: 100%; height: auto; display: block;"
                 src="public/assets/mues-ai/Mues 1.png"
-                alt="Selection 1"
+                alt="Mues AI 1"
               />
             </div>
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
-                class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block;"
-                src="public/assets/roadmapeThumbnail.jpg"
-                alt="Selection 2"
+                class="border selections-slider-image"
+                style="border-color: #eeeeee; border-radius: 16px; width: 100%; height: auto; display: block;"
+                src="public/assets/mues-ai/Mues 2.png"
+                alt="Mues AI 2"
               />
             </div>
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
-                class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block;"
-                src="public/assets/producterThumbnail.jpg"
-                alt="Selection 3"
+                class="border selections-slider-image"
+                style="border-color: #eeeeee; border-radius: 16px; width: 100%; height: auto; display: block;"
+                src="public/assets/mues-ai/Mues 3.png"
+                alt="Mues AI 3"
               />
             </div>
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
-                class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block;"
-                src="public/assets/heyboosterThumbnail.jpg"
-                alt="Selection 4"
+                class="border selections-slider-image"
+                style="border-color: #eeeeee; border-radius: 16px; width: 100%; height: auto; display: block;"
+                src="public/assets/mues-ai/Mues 4.png"
+                alt="Mues AI 4"
               />
             </div>
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
-                class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block;"
-                src="public/assets/mues-aiThumbnail.jpg"
-                alt="Selection 5"
+                class="border selections-slider-image"
+                style="border-color: #eeeeee; border-radius: 16px; width: 100%; height: auto; display: block;"
+                src="public/assets/mues-ai/Mues 5.png"
+                alt="Mues AI 5"
               />
             </div>
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
-                class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block;"
-                src="public/assets/roadmapeThumbnail.jpg"
-                alt="Selection 6"
+                class="border selections-slider-image"
+                style="border-color: #eeeeee; border-radius: 16px; width: 100%; height: auto; display: block;"
+                src="public/assets/mues-ai/Mues 6.png"
+                alt="Mues AI 6"
               />
             </div>
             <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
               <img
-                class="border border-gray-200 selections-slider-image"
-                style="border-radius: 16px; width: 100%; height: auto; display: block;"
-                src="public/assets/producterThumbnail.jpg"
-                alt="Selection 7"
+                class="border selections-slider-image"
+                style="border-color: #eeeeee; border-radius: 16px; width: 100%; height: auto; display: block;"
+                src="public/assets/mues-ai/Mues 7.png"
+                alt="Mues AI 7"
+              />
+            </div>
+            <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
+              <img
+                class="border selections-slider-image"
+                style="border-color: #eeeeee; border-radius: 16px; width: 100%; height: auto; display: block;"
+                src="public/assets/mues-ai/Mues 8.png"
+                alt="Mues AI 8"
+              />
+            </div>
+            <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
+              <img
+                class="border selections-slider-image"
+                style="border-color: #eeeeee; border-radius: 16px; width: 100%; height: auto; display: block;"
+                src="public/assets/mues-ai/Mues 9.png"
+                alt="Mues AI 9"
+              />
+            </div>
+            <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
+              <img
+                class="border selections-slider-image"
+                style="border-color: #eeeeee; border-radius: 16px; width: 100%; height: auto; display: block;"
+                src="public/assets/mues-ai/Mues 10.png"
+                alt="Mues AI 10"
+              />
+            </div>
+            <div class="selections-slide" style="flex: 0 0 100%; min-width: 0;">
+              <img
+                class="border selections-slider-image"
+                style="border-color: #eeeeee; border-radius: 16px; width: 100%; height: auto; display: block;"
+                src="public/assets/mues-ai/Mues 11.png"
+                alt="Mues AI 11"
               />
             </div>
           </div>
@@ -444,6 +508,10 @@
             <button class="selections-dot" data-slide="4" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 5"></button>
             <button class="selections-dot" data-slide="5" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 6"></button>
             <button class="selections-dot" data-slide="6" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 7"></button>
+            <button class="selections-dot" data-slide="7" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 8"></button>
+            <button class="selections-dot" data-slide="8" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 9"></button>
+            <button class="selections-dot" data-slide="9" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 10"></button>
+            <button class="selections-dot" data-slide="10" style="width: 6px; height: 6px; border-radius: 3px; border: none; background: #dddddd; cursor: pointer; transition: all 0.3s ease; padding: 0;" aria-label="Slide 11"></button>
           </div>
         </div>
       </div>
@@ -467,11 +535,11 @@
               Built the first agentic AI cursor for human software interaction. Led product strategy and design for agentic AI cursor technology that transforms user interaction with software applications. Created domain-specific AI agents capable of performing complex user actions.
             </p>
             <p class="text-sm text-slate-600 leading-relaxed" style="margin-bottom: 12px;">
-              Sep 2025 – Oct 2025
+              Jan 2025 – Oct 2025
             </p>
             <img
-              class="project-image border border-gray-200"
-              style="border-radius: 16px; margin-top: 0;"
+              class="project-image border"
+              style="border-color: #eeeeee; border-radius: 16px; margin-top: 0;"
               src="public/assets/mues-ai/Mues 1.png"
               alt="Mues AI"
             />
@@ -493,8 +561,8 @@
               Sep 2023 – Sep 2024
             </p>
             <img
-              class="project-image border border-gray-200"
-              style="border-radius: 16px; margin-top: 0;"
+              class="project-image border"
+              style="border-color: #eeeeee; border-radius: 16px; margin-top: 0;"
               src="public/assets/roadmapeThumbnail.jpg"
               alt="Roadmape"
             />
@@ -516,8 +584,8 @@
               Jan 2022 – Sep 2023
             </p>
             <img
-              class="project-image border border-gray-200"
-              style="border-radius: 16px; margin-top: 0;"
+              class="project-image border"
+              style="border-color: #eeeeee; border-radius: 16px; margin-top: 0;"
               src="public/assets/producterThumbnail.jpg"
               alt="Producter"
             />
@@ -539,8 +607,8 @@
               May 2024 – Jan 2025
             </p>
             <img
-              class="project-image border border-gray-200"
-              style="border-radius: 16px; margin-top: 0;"
+              class="project-image border"
+              style="border-color: #eeeeee; border-radius: 16px; margin-top: 0;"
               src="public/assets/heyboosterThumbnail.jpg"
               alt="Heybooster"
             />

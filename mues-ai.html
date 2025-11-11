@@ -18,9 +18,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="output.css" rel="stylesheet" />
     <style>
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Regular.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Semibold.otf') format('opentype');
+        font-weight: 600;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+      }
       html {
         font-family: "Inter", sans-serif;
         scroll-behavior: smooth;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Open Runde', sans-serif;
       }
       a:hover {
         color: #0089FF !important;
@@ -33,12 +60,16 @@
         height: 32px;
         font-size: 14px;
         font-weight: 500;
+        font-family: 'Open Runde', sans-serif;
         color: white;
         background-color: #0089FF;
         border: 1px solid #0089FF;
         border-radius: 8px;
         cursor: pointer;
         text-decoration: none;
+      }
+      button {
+        font-family: 'Open Runde', sans-serif;
       }
       .book-call-button:hover {
         color: white !important;
@@ -88,9 +119,17 @@
     <div class="prose project-card mx-auto max-w-4xl">
       <a
         href="/"
-        class="inline-block text-base text-gray-700 hover:underline mb-6"
+        class="inline-block text-base hover:underline mb-6"
+        style="color: #979797;"
         >&larr; Back</a
       >
+      <div style="margin-bottom: 24px;">
+        <img
+          src="https://mues.ai/favicon.ico"
+          alt="Mues AI Logo"
+          style="width: 32px; height: 32px; border-radius: 8px; object-fit: contain; background: #f5f5f5; padding: 4px;"
+        />
+      </div>
       <h1 class="text-xl sm:text-2xl font-medium mb-8">
         Co-founder (Design Lead) at
         <a
@@ -114,71 +153,91 @@
     <div class="prose mx-auto max-w-4xl flex flex-col gap-8" style="margin-top: 48px; margin-bottom: 96px;">
       <div class="w-full">
         <img
-          src="public/assets/mues-ai/Mues 1.png"
+          src="/assets/mues-ai/Mues 1.png"
           alt="Mues AI Work 1"
-          class="w-full border border-gray-200"
-          style="border-radius: 16px;"
+          class="w-full border"
+          style="border-color: #eeeeee; border-radius: 20px;"
         />
       </div>
       <div class="w-full">
         <img
-          src="public/assets/mues-ai/Mues 1.png"
+          src="/assets/mues-ai/Mues 2.png"
           alt="Mues AI Work 2"
-          class="w-full border border-gray-200"
-          style="border-radius: 16px;"
+          class="w-full border"
+          style="border-color: #eeeeee; border-radius: 20px;"
         />
       </div>
       <div class="w-full">
         <img
-          src="public/assets/mues-ai/paradox3.jpg"
+          src="/assets/mues-ai/Mues 3.png"
           alt="Mues AI Work 3"
-          class="w-full border border-gray-200"
-          style="border-radius: 16px;"
+          class="w-full border"
+          style="border-color: #eeeeee; border-radius: 20px;"
         />
       </div>
       <div class="w-full">
         <img
-          src="public/assets/mues-ai/paradox4.jpg"
+          src="/assets/mues-ai/Mues 4.png"
           alt="Mues AI Work 4"
-          class="w-full border border-gray-200"
-          style="border-radius: 16px;"
+          class="w-full border"
+          style="border-color: #eeeeee; border-radius: 20px;"
         />
       </div>
       <div class="w-full">
         <img
-          src="public/assets/mues-ai/paradox7.jpg"
+          src="/assets/mues-ai/Mues 5.png"
+          alt="Mues AI Work 5"
+          class="w-full border"
+          style="border-color: #eeeeee; border-radius: 20px;"
+        />
+      </div>
+      <div class="w-full">
+        <img
+          src="/assets/mues-ai/Mues 6.png"
+          alt="Mues AI Work 6"
+          class="w-full border"
+          style="border-color: #eeeeee; border-radius: 20px;"
+        />
+      </div>
+      <div class="w-full">
+        <img
+          src="/assets/mues-ai/Mues 7.png"
           alt="Mues AI Work 7"
-          class="w-full border border-gray-200"
-          style="border-radius: 16px;"
+          class="w-full border"
+          style="border-color: #eeeeee; border-radius: 20px;"
         />
       </div>
       <div class="w-full">
         <img
-          src="public/assets/mues-ai/paradox8.jpg"
+          src="/assets/mues-ai/Mues 8.png"
           alt="Mues AI Work 8"
-          class="w-full border border-gray-200"
-          style="border-radius: 16px;"
+          class="w-full border"
+          style="border-color: #eeeeee; border-radius: 20px;"
         />
       </div>
       <div class="w-full">
-        <video
-          src="public/assets/mues-ai/paradox5.mp4"
-          class="w-full border border-gray-200"
-          style="border-radius: 16px;"
-          muted
-          autoplay
-          loop
-        ></video>
+        <img
+          src="/assets/mues-ai/Mues 9.png"
+          alt="Mues AI Work 9"
+          class="w-full border"
+          style="border-color: #eeeeee; border-radius: 20px;"
+        />
       </div>
       <div class="w-full">
-        <video
-          src="public/assets/mues-ai/paradox6.mp4"
-          class="w-full border border-gray-200"
-          style="border-radius: 16px;"
-          muted
-          autoplay
-          loop
-        ></video>
+        <img
+          src="/assets/mues-ai/Mues 10.png"
+          alt="Mues AI Work 10"
+          class="w-full border"
+          style="border-color: #eeeeee; border-radius: 20px;"
+        />
+      </div>
+      <div class="w-full">
+        <img
+          src="/assets/mues-ai/Mues 11.png"
+          alt="Mues AI Work 11"
+          class="w-full border"
+          style="border-color: #eeeeee; border-radius: 20px;"
+        />
       </div>
     </div>
 
