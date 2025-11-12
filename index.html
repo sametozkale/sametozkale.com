@@ -80,7 +80,8 @@
         color: white;
         background-color: #0089FF;
         border: 1px solid #0089FF;
-        border-radius: 8px;
+        border-radius: 24px;
+        corner-shape: squircle;
         cursor: pointer;
         text-decoration: none;
       }
@@ -305,6 +306,27 @@
         }
         .footer-columns {
           margin-bottom: 32px !important;
+        }
+      }
+      .email-input:focus {
+        border-color: #0089FF;
+      }
+      .glossary-button:hover {
+        background-color: #0077e6 !important;
+        border-color: #0077e6 !important;
+      }
+      .glossary-button:active {
+        transform: scale(0.98);
+      }
+      @media (max-width: 640px) {
+        .email-form {
+          max-width: 100% !important;
+        }
+        .email-form > div {
+          flex-direction: column !important;
+        }
+        .email-form .glossary-button {
+          width: 100% !important;
         }
       }
     </style>
@@ -534,7 +556,7 @@
             <p class="text-base leading-relaxed" style="color: #777; margin-bottom: 12px;">
               Built the first agentic AI cursor for human software interaction. Led product strategy and design for agentic AI cursor technology that transforms user interaction with software applications. Created domain-specific AI agents capable of performing complex user actions.
             </p>
-            <p class="text-sm text-slate-600 leading-relaxed" style="margin-bottom: 12px;">
+            <p class="text-sm text-slate-600 leading-relaxed" style="margin-bottom: 12px; color: #979797;">
               Jan 2025 – Oct 2025
             </p>
             <img
@@ -557,7 +579,7 @@
             <p class="text-base leading-relaxed" style="color: #777; margin-bottom: 12px;">
               Co-founder & Product & Design Lead. Pivoted from Producter to Roadmape. Designed intuitive user interfaces and seamless user experiences for complex product management workflows.
             </p>
-            <p class="text-sm text-slate-600 leading-relaxed" style="margin-bottom: 12px;">
+            <p class="text-sm text-slate-600 leading-relaxed" style="margin-bottom: 12px; color: #979797;">
               Sep 2023 – Sep 2024
             </p>
             <img
@@ -580,7 +602,7 @@
             <p class="text-base leading-relaxed" style="color: #777; margin-bottom: 12px;">
               Co-founder & Product & Design Lead. Designed and implemented features for feedback collection, task management, product updates, documentation, and roadmap management. Achieved 3500+ users from 18 different time zones, won Best UI/UX Design and Rising Star Awards, and raised $350,000 pre-seed round.
             </p>
-            <p class="text-sm text-slate-600 leading-relaxed" style="margin-bottom: 12px;">
+            <p class="text-sm text-slate-600 leading-relaxed" style="margin-bottom: 12px; color: #979797;">
               Jan 2022 – Sep 2023
             </p>
             <img
@@ -603,7 +625,7 @@
             <p class="text-base leading-relaxed" style="color: #777; margin-bottom: 12px;">
               Product & Design Advisor. Provided strategic product and design guidance to enhance user experience and drive product growth. Collaborated with stakeholders to align design solutions with business objectives. Mentored design and product teams, and contributed to the overall product vision.
             </p>
-            <p class="text-sm text-slate-600 leading-relaxed" style="margin-bottom: 12px;">
+            <p class="text-sm text-slate-600 leading-relaxed" style="margin-bottom: 12px; color: #979797;">
               May 2024 – Jan 2025
             </p>
             <img
@@ -643,6 +665,37 @@
           </div>
           <div class="service-card">
             <h3 class="text-base font-medium text-slate-900">AI Strategy</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Glossary Email Callout -->
+      <div class="prose mx-auto max-w-prose" style="margin-top: 64px; margin-bottom: 96px;">
+        <div class="email-callout" style="background: #fafafa; border: 1px solid #eeeeee; border-radius: 16px; padding: 32px; text-align: center;">
+          <h2 class="text-xl sm:text-2xl text-slate-900 font-medium mb-4">AI Glossary</h2>
+          <p class="text-base leading-relaxed mb-6" style="color: #777;">
+            Enter your email to access an interactive guide to understanding the core concepts behind artificial intelligence.
+          </p>
+          <div class="email-form" style="display: flex; flex-direction: column; gap: 12px; max-width: 500px; margin: 0 auto;">
+            <div style="display: flex; gap: 8px; align-items: flex-start;">
+              <div style="flex: 1; display: flex; flex-direction: column;">
+                <input
+                  type="email"
+                  id="glossary-email"
+                  placeholder="your@email.com"
+                  style="padding: 12px 16px; border: 1px solid #eeeeee; border-radius: 12px; font-size: 14px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s ease; width: 100%;"
+                  class="email-input"
+                />
+                <div id="email-error" style="color: #dc2626; font-size: 13px; text-align: left; display: none; margin-top: 4px;"></div>
+              </div>
+              <button
+                id="go-to-glossary-btn"
+                style="padding: 12px 24px; background-color: #0089FF; color: white; border: 1px solid #0089FF; border-radius: 24px; corner-shape: squircle; font-size: 14px; font-weight: 500; font-family: 'Open Runde', sans-serif; cursor: pointer; transition: all 0.2s ease; white-space: nowrap; flex-shrink: 0;"
+                class="glossary-button"
+              >
+                Go to AI Glossary
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -967,6 +1020,82 @@
             } else {
               iconSpan.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="7" fill="currentColor"/></svg>';
             }
+          }
+        });
+      })();
+
+      // Email validation and redirect for AI Glossary
+      (function() {
+        const emailInput = document.getElementById('glossary-email');
+        const goToGlossaryBtn = document.getElementById('go-to-glossary-btn');
+        const errorDiv = document.getElementById('email-error');
+
+        function validateEmail(email) {
+          // Basic format check: contains @ and .
+          return email.includes('@') && email.includes('.');
+        }
+
+        function showError(message) {
+          errorDiv.textContent = message;
+          errorDiv.style.display = 'block';
+          emailInput.style.borderColor = '#dc2626';
+        }
+
+        function hideError() {
+          errorDiv.style.display = 'none';
+          emailInput.style.borderColor = '#eeeeee';
+        }
+
+        goToGlossaryBtn.addEventListener('click', async function() {
+          const email = emailInput.value.trim();
+
+          if (!email) {
+            showError('Please enter your email address');
+            return;
+          }
+
+          if (!validateEmail(email)) {
+            showError('Please enter a valid email address');
+            return;
+          }
+
+          hideError();
+
+          try {
+            // Submit email to server
+            const response = await fetch('/api/submit-email', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ email: email }),
+            });
+
+            if (response.ok) {
+              // Redirect to AI Glossary
+              window.location.href = '/ai-glossary';
+            } else {
+              // Even if server fails, allow access (graceful degradation)
+              window.location.href = '/ai-glossary';
+            }
+          } catch (error) {
+            console.error('Error submitting email:', error);
+            // Allow access even if API fails
+            window.location.href = '/ai-glossary';
+          }
+        });
+
+        // Allow Enter key to submit
+        emailInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            goToGlossaryBtn.click();
+          }
+        });
+
+        // Clear error on input
+        emailInput.addEventListener('input', function() {
+          if (errorDiv.style.display === 'block') {
+            hideError();
           }
         });
       })();

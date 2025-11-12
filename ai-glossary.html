@@ -1,0 +1,2814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-QBD8DZ6W9Y"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-QBD8DZ6W9Y");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="output.css" rel="stylesheet" />
+    <style>
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Regular.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Semibold.otf') format('opentype');
+        font-weight: 600;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Open Runde';
+        src: url('/assets/fonts/OpenRunde-Bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+      }
+      html {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Open Runde', sans-serif;
+      }
+      a:hover {
+        color: #0089FF !important;
+      }
+      .book-call-button:hover {
+        color: white !important;
+      }
+      .book-call-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 12px;
+        height: 32px;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: 'Open Runde', sans-serif;
+        color: white;
+        background-color: #0089FF;
+        border: 1px solid #0089FF;
+        border-radius: 24px;
+        corner-shape: squircle;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      button {
+        font-family: 'Open Runde', sans-serif;
+      }
+      .glossary-layout {
+        display: flex;
+        gap: 64px;
+        max-width: 1200px;
+        margin: 48px auto 0;
+        align-items: flex-start;
+        padding: 0;
+      }
+      .glossary-sidebar {
+        position: fixed;
+        left: 32px;
+        top: 120px;
+        width: 200px;
+        flex-shrink: 0;
+        align-self: flex-start;
+      }
+      .glossary-sidebar-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 12px;
+        font-family: 'Open Runde', sans-serif;
+      }
+      .glossary-sidebar-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .glossary-sidebar-btn {
+        background: none;
+        border: none;
+        padding: 8px 14px;
+        font-size: 13px;
+        font-family: 'Inter', sans-serif;
+        color: #666;
+        cursor: pointer;
+        text-align: left;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 8px;
+        position: relative;
+      }
+      .glossary-sidebar-btn::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 0;
+        background: #0089FF;
+        border-radius: 0 2px 2px 0;
+        transition: height 0.2s ease;
+      }
+      .glossary-sidebar-btn:hover {
+        background: linear-gradient(90deg, #f5f5f5 0%, #fafafa 100%);
+        color: #000;
+        transform: translateX(2px);
+      }
+      .glossary-sidebar-btn:active {
+        transform: translateX(1px);
+        background: #f0f0f0;
+      }
+      .glossary-sidebar-btn.active {
+        background: linear-gradient(90deg, #f0f7ff 0%, #fafbfc 100%);
+        color: #0089FF;
+        font-weight: 600;
+        transform: translateX(2px);
+      }
+      .glossary-sidebar-btn.active::before {
+        height: 60%;
+      }
+      .glossary-content {
+        flex: 1;
+        min-width: 0;
+        max-width: 65ch;
+        width: 100%;
+      }
+      .glossary-term-title {
+        font-size: 20px;
+        font-weight: 500;
+        color: #1e293b;
+        margin-bottom: 12px;
+        font-family: 'Open Runde', sans-serif;
+        line-height: 1.2;
+      }
+      .glossary-item {
+        margin-bottom: 96px;
+        scroll-margin-top: 120px;
+        width: 100%;
+        max-width: 100%;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .glossary-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .glossary-item:last-child {
+        margin-bottom: 0;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .glossary-term-description {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #777;
+        margin-bottom: 12px;
+      }
+      .glossary-visualization {
+        background: linear-gradient(135deg, #fafafa 0%, #f5f7fa 100%);
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 32px;
+        margin: 12px 0;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+      .token-visualization {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .token-item {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 10px 14px;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        position: relative;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transform: translateY(10px) scale(0.95);
+        animation: tokenItemFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        cursor: pointer;
+      }
+      .token-item:nth-child(1) { animation-delay: 0.05s; }
+      .token-item:nth-child(2) { animation-delay: 0.1s; }
+      .token-item:nth-child(3) { animation-delay: 0.15s; }
+      .token-item:nth-child(4) { animation-delay: 0.2s; }
+      .token-item:nth-child(5) { animation-delay: 0.25s; }
+      .token-item:nth-child(6) { animation-delay: 0.3s; }
+      .token-item:hover {
+        border-color: #0089FF;
+        background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+        transform: translateY(-5px) scale(1.03);
+        z-index: 2;
+      }
+      .token-item:active {
+        transform: translateY(-2px) scale(1.01);
+        background: linear-gradient(135deg, #e0f0ff 0%, #d0e9fc 100%);
+      }
+      @keyframes tokenItemFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .token-text {
+        font-weight: 500;
+        color: #000;
+      }
+      .token-id {
+        font-size: 11px;
+        color: #999;
+        font-family: 'Chivo Mono', monospace;
+      }
+      .tokenization-input-container {
+        position: relative;
+        margin-bottom: 16px;
+      }
+      .tokenization-input {
+        width: 100%;
+        padding: 14px 18px;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        font-size: 16px;
+        font-family: 'Chivo Mono', monospace;
+        outline: none;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        background: white;
+      }
+      .tokenization-input:hover {
+        border: 1px solid #cbd5e1;
+      }
+      .tokenization-input:focus {
+        border: 1px solid #0089FF;
+        background: #fafbfc;
+      }
+      .tokenization-result-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        align-items: center;
+        padding: 18px;
+        background: linear-gradient(135deg, #fafafa 0%, #f5f7fa 100%);
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        min-height: 60px;
+        margin-top: 16px;
+        transition: all 0.25s ease;
+      }
+      .tokenization-result-container:hover {
+        border: 1px solid #cbd5e1;
+      }
+      .tokenization-token {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        padding: 7px 12px;
+        font-size: 13px;
+        font-family: 'Chivo Mono', monospace;
+        color: #000;
+        position: relative;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        display: inline-block;
+      }
+      .tokenization-token:hover {
+        border: 1px solid #0089FF;
+        background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+        transform: translateY(-4px) scale(1.06);
+        z-index: 10;
+      }
+      .tokenization-token:active {
+        border: 1px solid #0089FF;
+        transform: translateY(-1px) scale(1.02);
+        background: linear-gradient(135deg, #e0f0ff 0%, #d0e9fc 100%);
+      }
+      .tokenization-token::after {
+        content: attr(data-token-info);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-8px);
+        background: white;
+        color: #1e293b;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        font-size: 12px;
+        white-space: nowrap;
+        margin-bottom: 8px;
+        z-index: 100;
+        font-family: 'Inter', sans-serif;
+        line-height: 1.5;
+        max-width: 240px;
+        white-space: normal;
+        text-align: left;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 400;
+      }
+      .tokenization-token:not([data-token-info])::after,
+      .tokenization-token[data-token-info=""]::after {
+        display: none;
+      }
+      .tokenization-token::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #e5e7eb;
+        margin-bottom: 2px;
+        z-index: 101;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .tokenization-token:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-10px);
+      }
+      .tokenization-token:not([data-token-info]):hover::after,
+      .tokenization-token[data-token-info=""]:hover::after {
+        display: none;
+      }
+      .tokenization-token:hover::before {
+        opacity: 1;
+      }
+      .tokenization-token:not([data-token-info]):hover::before,
+      .tokenization-token[data-token-info=""]:hover::before {
+        display: none;
+      }
+      .embedding-visualization {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .embedding-word {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        padding: 7px 12px;
+        font-size: 12px;
+        color: #666;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transform: scale(0.9);
+        animation: embeddingWordFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        cursor: pointer;
+        position: relative;
+        font-weight: 500;
+      }
+      .embedding-word::after {
+        content: attr(data-similar-words);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-8px);
+        background: white;
+        color: #1e293b;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        font-family: 'Inter', sans-serif;
+        margin-bottom: 8px;
+        z-index: 100;
+        max-width: 280px;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+        font-weight: 400;
+      }
+      .embedding-word:not([data-similar-words])::after,
+      .embedding-word[data-similar-words=""]::after {
+        display: none;
+      }
+      .embedding-word::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #e5e7eb;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-bottom: 2px;
+        z-index: 101;
+      }
+      .embedding-word:hover {
+        transform: scale(1.1) translateY(-3px);
+        z-index: 5;
+        border-color: #0089FF;
+        background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+        color: #0089FF;
+      }
+      .embedding-word:active {
+        transform: scale(1.05) translateY(-1px);
+        background: linear-gradient(135deg, #e0f0ff 0%, #d0e9fc 100%);
+      }
+      .embedding-word:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-10px);
+      }
+      .embedding-word:not([data-similar-words]):hover::after,
+      .embedding-word[data-similar-words=""]:hover::after {
+        display: none;
+      }
+      .embedding-word:hover::before {
+        opacity: 1;
+      }
+      .embedding-word:not([data-similar-words]):hover::before,
+      .embedding-word[data-similar-words=""]:hover::before {
+        display: none;
+      }
+      .embedding-word.embedded {
+        background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+        border-color: #0089FF;
+        color: #0089FF;
+        transform: scale(1.05);
+        font-weight: 600;
+      }
+      .embedding-word.grouped {
+        background: linear-gradient(135deg, #e8f4fd 0%, #d0e9fc 100%);
+        border-color: #0089FF;
+        transform: scale(1.03);
+      }
+      .embedding-word.grouped:hover {
+        background: linear-gradient(135deg, #d0e9fc 0%, #b8dff9 100%);
+        transform: scale(1.1) translateY(-3px);
+      }
+      .embedding-word.grouped:active {
+        transform: scale(1.06) translateY(-1px);
+      }
+      @keyframes embeddingWordFadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9) translateY(5px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      .latent-space-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        max-width: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+      .latent-word {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        padding: 5px 10px;
+        font-size: 11px;
+        color: #666;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        opacity: 0;
+        transform: scale(0.85) translateY(5px);
+        font-weight: 500;
+      }
+      .latent-word:hover {
+        background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+        border-color: #0089FF;
+        color: #0089FF;
+        transform: scale(1.12) translateY(-3px);
+        z-index: 5;
+        font-weight: 600;
+      }
+      .latent-word:active {
+        transform: scale(1.06) translateY(-1px);
+        background: linear-gradient(135deg, #e0f0ff 0%, #d0e9fc 100%);
+      }
+      .latent-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0089FF 0%, #0077e6 100%);
+        opacity: 0;
+        margin: 0 auto;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        transform: scale(0);
+      }
+      .latent-dot:hover {
+        opacity: 1;
+        transform: scale(2.2);
+        background: linear-gradient(135deg, #0099ff 0%, #0088f5 100%);
+        z-index: 5;
+      }
+      .latent-dot:active {
+        transform: scale(1.8);
+      }
+      .neural-network-visualization {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        position: relative;
+        padding: 24px;
+      }
+      .network-layer {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        position: relative;
+      }
+      .network-layer::before {
+        content: attr(data-layer-name);
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 11px;
+        color: #999;
+        font-family: 'Inter', sans-serif;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .network-layer:hover::before {
+        opacity: 1;
+      }
+      .network-node {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0089FF 0%, #0077e6 100%);
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 13px;
+        font-weight: 500;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: networkNodePulse 2s ease-in-out infinite;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+      }
+      .network-node::after {
+        content: attr(data-node-info);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-8px);
+        background: white;
+        color: #1e293b;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        font-family: 'Inter', sans-serif;
+        margin-bottom: 8px;
+        z-index: 100;
+        max-width: 240px;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+        font-weight: 400;
+      }
+      .network-node:not([data-node-info])::after,
+      .network-node[data-node-info=""]::after {
+        display: none;
+      }
+      .network-node::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #e5e7eb;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-bottom: 2px;
+        z-index: 101;
+      }
+      .network-node:hover {
+        opacity: 1;
+        transform: scale(1.18);
+        z-index: 10;
+        background: linear-gradient(135deg, #0099ff 0%, #0088f5 100%);
+      }
+      .network-node:active {
+        transform: scale(1.1);
+        background: linear-gradient(135deg, #0077e6 0%, #0066d4 100%);
+      }
+      .network-node:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-10px);
+      }
+      .network-node:not([data-node-info]):hover::after,
+      .network-node[data-node-info=""]:hover::after {
+        display: none;
+      }
+      .network-node:hover::before {
+        opacity: 1;
+      }
+      .network-node:not([data-node-info]):hover::before,
+      .network-node[data-node-info=""]:hover::before {
+        display: none;
+      }
+      .network-connection {
+        position: absolute;
+        background: linear-gradient(to bottom, rgba(0, 137, 255, 0.2), rgba(0, 137, 255, 0.05));
+        pointer-events: none;
+        z-index: 1;
+        transition: opacity 0.3s ease;
+      }
+      .network-layer:hover .network-connection {
+        opacity: 0.6;
+      }
+      @keyframes networkNodePulse {
+        0%, 100% {
+          opacity: 0.7;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.9;
+          transform: scale(1.05);
+        }
+      }
+      @keyframes networkFlow {
+        0% {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .network-arrow {
+        width: 0;
+        height: 0;
+        border-left: 10px solid #0089FF;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+        animation: networkFlow 0.6s ease forwards;
+      }
+      .network-layer:hover ~ .network-arrow {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+      .parameter-visualization {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        max-width: 500px;
+      }
+      .parameter-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0089FF 0%, #0077e6 100%);
+        opacity: 0;
+        transform: scale(0);
+        animation: parameterDotFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0, 137, 255, 0.3);
+      }
+      .parameter-dot:hover {
+        opacity: 1;
+        transform: scale(1.8);
+        box-shadow: 0 0 12px rgba(0, 137, 255, 0.5);
+        background: linear-gradient(135deg, #0099ff 0%, #0088f5 100%);
+        z-index: 5;
+      }
+      .parameter-dot:active {
+        transform: scale(1.4);
+        box-shadow: 0 0 8px rgba(0, 137, 255, 0.4);
+      }
+      @keyframes parameterDotFadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0);
+        }
+        to {
+          opacity: 0.5;
+          transform: scale(1);
+        }
+      }
+      .model-examples {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .model-example {
+        background: white;
+        border: 1px solid #eeeeee;
+        border-radius: 8px;
+        padding: 16px;
+      }
+      .model-example-question {
+        font-size: 13px;
+        color: #777;
+        margin-bottom: 8px;
+      }
+      .model-example-answer {
+        font-size: 14px;
+        color: #000;
+        font-weight: 500;
+      }
+      .transformer-visualization {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        position: relative;
+      }
+      .transformer-word {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 9px 14px;
+        font-size: 13px;
+        color: #000;
+        position: relative;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        z-index: 2;
+        font-weight: 500;
+      }
+      .transformer-word::after {
+        content: attr(data-attention-info);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-8px);
+        background: white;
+        color: #1e293b;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        font-family: 'Inter', sans-serif;
+        margin-bottom: 8px;
+        z-index: 100;
+        max-width: 240px;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+        font-weight: 400;
+      }
+      .transformer-word:not([data-attention-info])::after,
+      .transformer-word[data-attention-info=""]::after {
+        display: none;
+      }
+      .transformer-word::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #e5e7eb;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-bottom: 2px;
+        z-index: 101;
+      }
+      .transformer-word:hover {
+        background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+        border-color: #0089FF;
+        color: #0089FF;
+        transform: translateY(-3px) scale(1.06);
+        z-index: 10;
+        font-weight: 600;
+      }
+      .transformer-word:active {
+        transform: translateY(-1px) scale(1.02);
+        background: linear-gradient(135deg, #e0f0ff 0%, #d0e9fc 100%);
+      }
+      .transformer-word:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-10px);
+      }
+      .transformer-word:not([data-attention-info]):hover::after,
+      .transformer-word[data-attention-info=""]:hover::after {
+        display: none;
+      }
+      .transformer-word:hover::before {
+        opacity: 1;
+      }
+      .transformer-word:not([data-attention-info]):hover::before,
+      .transformer-word[data-attention-info=""]:hover::before {
+        display: none;
+      }
+      .transformer-word.attention-active {
+        background: linear-gradient(135deg, #e8f4fd 0%, #d0e9fc 100%);
+        border-color: #0089FF;
+        font-weight: 600;
+      }
+      .attention-connection {
+        position: absolute;
+        height: 2px;
+        background: linear-gradient(to right, rgba(0, 137, 255, 0.3), rgba(0, 137, 255, 0.1));
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .transformer-word:hover ~ .transformer-word .attention-connection,
+      .transformer-visualization:hover .attention-connection {
+        opacity: 0.4;
+      }
+      .attention-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+      }
+      .attention-line {
+        stroke: #0089FF;
+        stroke-width: 1;
+        opacity: 0.3;
+      }
+      .pre-training-visualization {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .pre-training-word {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        padding: 5px 10px;
+        font-size: 11px;
+        color: #666;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        opacity: 0;
+        transform: scale(0.9) translateY(5px);
+        font-weight: 500;
+      }
+      .pre-training-word:hover {
+        background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+        border-color: #0089FF;
+        color: #0089FF;
+        transform: translateY(-4px) scale(1.08);
+        z-index: 5;
+        font-weight: 600;
+      }
+      .pre-training-word:active {
+        transform: translateY(-1px) scale(1.03);
+        background: linear-gradient(135deg, #e0f0ff 0%, #d0e9fc 100%);
+      }
+      @keyframes preTrainFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.85);
+        }
+        50% {
+          transform: translateY(-2px) scale(1.05);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .fine-tuning-visualization {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .fine-tuning-before,
+      .fine-tuning-after {
+        flex: 1;
+        padding: 16px;
+        background: white;
+        border: 1px solid #eeeeee;
+        border-radius: 8px;
+      }
+      .fine-tuning-arrow {
+        font-size: 24px;
+        color: #0089FF;
+      }
+      .reinforcement-visualization {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+      }
+      .rl-step {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        padding: 12px;
+        background: white;
+        border: 1px solid #eeeeee;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 400px;
+      }
+      .chain-of-thought {
+        background: white;
+        border: 1px solid #eeeeee;
+        border-radius: 8px;
+        padding: 24px;
+      }
+      .chain-step {
+        margin-bottom: 16px;
+        padding-left: 16px;
+        border-left: 2px solid #0089FF;
+      }
+      .chain-step-title {
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .chain-step-content {
+        color: #777;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .inference-visualization {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+      .inference-step {
+        background: white;
+        border: 1px solid #eeeeee;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 14px;
+        color: #000;
+      }
+      .rag-visualization {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        padding: 24px;
+      }
+      .rag-step-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        max-width: 600px;
+        position: relative;
+      }
+      .rag-box {
+        background: white;
+        border: 2px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 18px 22px;
+        flex: 1;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        min-height: 65px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .rag-box::after {
+        content: attr(data-step-info);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-8px);
+        background: white;
+        color: #1e293b;
+        padding: 12px 16px;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        font-family: 'Inter', sans-serif;
+        margin-bottom: 8px;
+        z-index: 100;
+        max-width: 320px;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+        font-weight: 400;
+      }
+      .rag-box:not([data-step-info])::after,
+      .rag-box[data-step-info=""]::after {
+        display: none;
+      }
+      .rag-box::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #e5e7eb;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-bottom: 2px;
+        z-index: 101;
+      }
+      .rag-box:hover {
+        background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+        border-color: #0089FF;
+        transform: translateY(-4px);
+        border-width: 2px;
+      }
+      .rag-box:active {
+        transform: translateY(-1px);
+        background: linear-gradient(135deg, #e0f0ff 0%, #d0e9fc 100%);
+      }
+      .rag-box:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-10px);
+      }
+      .rag-box:not([data-step-info]):hover::after,
+      .rag-box[data-step-info=""]:hover::after {
+        display: none;
+      }
+      .rag-box:hover::before {
+        opacity: 1;
+      }
+      .rag-box:not([data-step-info]):hover::before,
+      .rag-box[data-step-info=""]:hover::before {
+        display: none;
+      }
+      .rag-box-title {
+        font-size: 14px;
+        color: #000;
+        font-weight: 600;
+        margin-bottom: 6px;
+        font-family: 'Open Runde', sans-serif;
+        transition: color 0.2s ease;
+      }
+      .rag-box:hover .rag-box-title {
+        color: #0089FF;
+      }
+      .rag-box-description {
+        font-size: 12px;
+        color: #666;
+        line-height: 1.5;
+        transition: color 0.2s ease;
+      }
+      .rag-box:hover .rag-box-description {
+        color: #555;
+      }
+      .rag-arrow {
+        font-size: 24px;
+        color: #0089FF;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+      }
+      .rag-step-row:hover .rag-arrow {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      .rag-arrow-down {
+        font-size: 24px;
+        color: #0089FF;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+      .rag-step-row:hover ~ .rag-step-row .rag-arrow-down {
+        opacity: 1;
+      }
+      .agent-visualization {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+      .agent-component {
+        background: white;
+        border: 1px solid #eeeeee;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 13px;
+        color: #000;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+      .workflow-visualization {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .workflow-step {
+        background: white;
+        border: 1px solid #eeeeee;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 13px;
+        color: #000;
+        font-weight: 500;
+      }
+      .workflow-arrow {
+        color: #0089FF;
+        font-size: 18px;
+      }
+      .llm-visualization {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .llm-word {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 9px 14px;
+        font-size: 13px;
+        color: #000;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-block;
+        opacity: 0;
+        cursor: pointer;
+        transform: scale(0.95) translateY(5px);
+        font-weight: 500;
+      }
+      @media (max-width: 1024px) {
+        .glossary-layout {
+          flex-direction: column;
+          gap: 32px;
+          padding: 0 24px;
+        }
+        .glossary-sidebar {
+          position: sticky;
+          top: 80px;
+          left: auto;
+          width: 100%;
+        }
+        .glossary-sidebar-menu {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .glossary-sidebar-btn {
+          padding: 6px 12px;
+          border: 1px solid #eeeeee;
+          border-radius: 6px;
+        }
+        .glossary-reference {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+      }
+      .bottom-nav {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 1px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 999px;
+        padding: 3px;
+        z-index: 1000;
+      }
+      .bottom-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        text-decoration: none;
+        color: #777;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: 'Open Runde', sans-serif;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        transform: scale(1);
+        opacity: 0.8;
+        transform-origin: center;
+      }
+      .bottom-nav-item:first-child {
+        transform-origin: left center;
+      }
+      .bottom-nav-item:last-child {
+        transform-origin: right center;
+      }
+      .bottom-nav-item svg {
+        color: #ddd;
+        transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .bottom-nav-item:hover {
+        background: #f5f5f5;
+        color: #0089FF;
+        transform: scale(1.05);
+        opacity: 1;
+      }
+      .bottom-nav-item:first-child:hover {
+        transform: scale(1.05);
+        transform-origin: left center;
+      }
+      .bottom-nav-item:last-child:hover {
+        transform: scale(1.05);
+        transform-origin: right center;
+      }
+      .bottom-nav-item:hover svg {
+        color: #0089FF;
+      }
+      .bottom-nav-item:hover .nav-text {
+        display: inline;
+        animation: fadeInNav 0.3s ease;
+        font-size: 14px;
+        transform: scale(1);
+      }
+      @keyframes fadeInNav {
+        from {
+          opacity: 0;
+          transform: translateX(-4px) scale(1);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+      }
+      .bottom-nav-item.active {
+        background: #f5f5f5;
+        color: #0089FF;
+        transform: scale(1);
+        opacity: 1;
+      }
+      .bottom-nav-item.active svg {
+        color: #0089FF;
+      }
+      .bottom-nav-item.active .nav-text {
+        display: inline;
+        font-size: 14px;
+      }
+      .bottom-nav-item .nav-text {
+        display: none;
+        font-size: 14px;
+      }
+      .bottom-nav-icon {
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @media (max-width: 640px) {
+        .bottom-nav {
+          gap: 1px;
+          padding: 3px;
+        }
+        .bottom-nav-item {
+          padding: 6px 8px;
+          font-size: 12px;
+        }
+        .bottom-nav-item .nav-text {
+          font-size: 12px;
+        }
+        .bottom-nav-item:hover .nav-text {
+          font-size: 12px;
+        }
+        .bottom-nav-item.active .nav-text {
+          font-size: 12px;
+        }
+      }
+      /* Footer Responsive Styles */
+      @media (max-width: 768px) {
+        .footer-header {
+          flex-direction: column;
+          align-items: flex-start !important;
+        }
+        .footer-columns {
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 32px 24px !important;
+        }
+      }
+      @media (max-width: 480px) {
+        .footer-columns {
+          grid-template-columns: 1fr !important;
+          gap: 32px !important;
+        }
+        footer {
+          padding-top: 48px !important;
+          padding-bottom: 48px !important;
+        }
+        .footer-header {
+          margin-bottom: 32px !important;
+        }
+        .footer-columns {
+          margin-bottom: 32px !important;
+        }
+      }
+    </style>
+    <title>AI Glossary - Samet Özkale</title>
+    <link
+      rel="icon"
+      href="https://sametozkale.com/public/assets/favicon.png"
+      type="favicon"
+    />
+    <meta
+      name="description"
+      content="An interactive guide that helps you understand the fundamental concepts and terminology behind artificial intelligence, explained in simple and clear language."
+    />
+  </head>
+  <body>
+    <div id="scroll-container" class="bg-white" style="padding-top: 0; padding-bottom: 96px; padding-left: 24px; padding-right: 24px;">
+      <!-- Header Section -->
+      <div class="prose mx-auto max-w-prose" style="margin-top: 96px;">
+        <a
+          href="/"
+          class="inline-block text-base hover:underline mb-6"
+          style="color: #979797;"
+          >&larr; Back</a
+        >
+        <h1 class="text-2xl sm:text-3xl text-slate-900 font-medium" style="font-size: 20px; margin-bottom: 16px;">
+          AI Glossary
+        </h1>
+        <p class="text-base leading-relaxed" style="color: #777;">
+          An interactive guide that helps you understand the fundamental concepts and terminology behind artificial intelligence, explained in simple and clear language.
+        </p>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <div class="glossary-sidebar">
+        <div class="glossary-sidebar-title">AI Glossary</div>
+        <div class="glossary-sidebar-menu">
+          <button class="glossary-sidebar-btn active" data-term="token">Token</button>
+          <button class="glossary-sidebar-btn" data-term="tokenization">Tokenization</button>
+          <button class="glossary-sidebar-btn" data-term="embedding">Embedding</button>
+          <button class="glossary-sidebar-btn" data-term="context-window">Context window</button>
+          <button class="glossary-sidebar-btn" data-term="latent-space">Latent space</button>
+          <button class="glossary-sidebar-btn" data-term="neural-network">Neural network</button>
+          <button class="glossary-sidebar-btn" data-term="parameter">Parameter</button>
+          <button class="glossary-sidebar-btn" data-term="model">Model</button>
+          <button class="glossary-sidebar-btn" data-term="transformer">Transformer</button>
+          <button class="glossary-sidebar-btn" data-term="attention">Attention</button>
+          <button class="glossary-sidebar-btn" data-term="pre-training">Pre-training</button>
+          <button class="glossary-sidebar-btn" data-term="fine-tuning">Fine-tuning</button>
+          <button class="glossary-sidebar-btn" data-term="reinforcement-learning">Reinforcement learning</button>
+          <button class="glossary-sidebar-btn" data-term="chain-of-thought">Chain of thought</button>
+          <button class="glossary-sidebar-btn" data-term="inference">Inference</button>
+          <button class="glossary-sidebar-btn" data-term="rag">RAG</button>
+          <button class="glossary-sidebar-btn" data-term="agent">Agent</button>
+          <button class="glossary-sidebar-btn" data-term="workflow">Workflow</button>
+          <button class="glossary-sidebar-btn" data-term="llm">LLM</button>
+        </div>
+      </div>
+
+      <!-- Glossary Content -->
+      <div class="prose mx-auto max-w-prose" style="margin-top: 48px;">
+        <div class="glossary-content">
+        <!-- Token -->
+        <div class="glossary-item" id="token" style="scroll-margin-top: 120px;">
+          <h2 class="glossary-term-title">Token</h2>
+          <p class="glossary-term-description">
+            A token is the smallest piece of text an AI model can process—a word, part of a word, punctuation, or character. Each token gets a unique ID number the model uses to understand text.
+          </p>
+          <div class="glossary-visualization">
+            <div class="token-visualization">
+              <div class="token-item">
+                <span class="token-text">The</span>
+                <span class="token-id">#12345</span>
+              </div>
+              <div class="token-item">
+                <span class="token-text">dragon</span>
+                <span class="token-id">#67890</span>
+              </div>
+              <div class="token-item">
+                <span class="token-text">rests</span>
+                <span class="token-id">#24680</span>
+              </div>
+              <div class="token-item">
+                <span class="token-text">in</span>
+                <span class="token-id">#179</span>
+              </div>
+              <div class="token-item">
+                <span class="token-text">agony</span>
+                <span class="token-id">#2464</span>
+              </div>
+              <div class="token-item">
+                <span class="token-text">.</span>
+                <span class="token-id">#12</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            When you input text, the model first breaks it into tokens and assigns each a unique ID number for processing.
+          </p>
+        </div>
+
+        <!-- Tokenization -->
+        <div class="glossary-item" id="tokenization">
+          <h2 class="glossary-term-title">Tokenization</h2>
+          <p class="glossary-term-description">
+            Tokenization converts text into smaller pieces called tokens—words, subwords, or characters—that the model can process.
+          </p>
+          <div class="glossary-visualization">
+            <div style="padding: 24px;">
+              <div class="tokenization-input-container">
+                <input
+                  type="text"
+                  id="tokenization-input"
+                  class="tokenization-input"
+                  placeholder="Enter text to tokenize..."
+                  value="Have the courage to follow your heart and intuition"
+                />
+              </div>
+              <div class="tokenization-result-container" id="tokenization-result">
+                <!-- Tokens will be generated here -->
+              </div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Tokenization happens automatically as the first step—the model must break text into tokens before it can process anything.
+          </p>
+          <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+            <a href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener noreferrer" style="color: #0089FF; text-decoration: underline;">OpenAI Tokenizer</a>, an interactive tool that lets you see exactly how text gets broken down into tokens
+          </p>
+        </div>
+
+        <!-- Embedding -->
+        <div class="glossary-item" id="embedding">
+          <h2 class="glossary-term-title">Embedding</h2>
+          <p class="glossary-term-description">
+            An embedding converts each token into numbers that capture its meaning. Tokens with similar meanings are positioned close together in this mathematical space, helping the model understand word relationships.
+          </p>
+          <div class="glossary-visualization" style="flex-direction: column; position: relative;">
+            <div class="embedding-visualization" id="embedding-visualization" style="flex: 1; width: 100%;">
+              <span class="embedding-word">the</span>
+              <span class="embedding-word">neutral</span>
+              <span class="embedding-word">button</span>
+              <span class="embedding-word">elements</span>
+              <span class="embedding-word">slides</span>
+              <span class="embedding-word">actions</span>
+              <span class="embedding-word">when</span>
+              <span class="embedding-word">neutral</span>
+              <span class="embedding-word">hovered</span>
+              <span class="embedding-word">states</span>
+              <span class="embedding-word">and</span>
+              <span class="embedding-word">neutral</span>
+              <span class="embedding-word">the</span>
+              <span class="embedding-word">neutral</span>
+              <span class="embedding-word">layout</span>
+              <span class="embedding-word">elements</span>
+              <span class="embedding-word">adapts</span>
+              <span class="embedding-word">actions</span>
+              <span class="embedding-word">on</span>
+              <span class="embedding-word">neutral</span>
+              <span class="embedding-word">mobile</span>
+              <span class="embedding-word">states</span>
+              <span class="embedding-word">devices</span>
+              <span class="embedding-word">elements</span>
+            </div>
+            <div style="text-align: center; margin-top: auto; padding-top: 24px;">
+              <button id="embed-btn" class="book-call-button" style="padding: 0 12px; height: 32px;">
+                Embed
+              </button>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Embedding transforms tokens into numerical points, organizing similar concepts together. This happens after tokenization and enables the model to understand semantic relationships.
+          </p>
+          <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+            <a href="https://en.wikipedia.org/wiki/Vector_space" target="_blank" rel="noopener noreferrer" style="color: #0089FF; text-decoration: underline;">Wikipedia's 'Vector space'</a>, a detailed explanation of how vector spaces work mathematically
+          </p>
+        </div>
+
+        <!-- Context window -->
+        <div class="glossary-item" id="context-window">
+          <h2 class="glossary-term-title">Context window</h2>
+          <p class="glossary-term-description">
+            A context window is the maximum amount of text (in tokens) a model can process at once. Information beyond this limit isn't accessible during processing.
+          </p>
+          <div class="glossary-visualization" style="padding: 24px; text-align: left;">
+            <div style="max-width: 100%; font-size: 13px; line-height: 1.7; color: #777; font-family: 'Inter', sans-serif;">
+              <p style="margin-bottom: 12px;">
+                How are these computers all going to work together? They're probably going to work together a lot like people do. Sometimes they're going to work together really well, and other times they're not going to work together so well.
+              </p>
+              <p style="margin-bottom: 12px;">
+                What's happened, there's been a few installations where people have hooked these things together. The one installation that stands out is at Xerox Palo Alto Research Center, or PARC, for short. And they hooked about a hundred computers together on what's called a local area network, which is just a cable that carries all this information back and forth. […]
+              </p>
+              <p style="margin-bottom: 12px;">
+                Then an interesting thing happened. There were twenty people interested in volleyball. So a volleyball distribution list evolved, and then, when the volleyball game next week was changed, you'd write a quick memo and send it to the volleyball distribution list. Then there was a Chinese food cooking list. And before long, there were more lists than people.
+              </p>
+              <p style="margin-bottom: 12px;">
+                And it was a very, very interesting phenomenon, because I think that that's exactly what's going to happen as we start to tie these things [computers] together: they're going to facilitate communication and facilitate bringing people together in the special interests that they have.
+              </p>
+              <p style="margin-bottom: 12px;">
+                And we're about five years away from really solving the problems of hooking these computers together in the office. And we're about ten to fifteen years away from solving the problems of hooking them together in the home. A lot of people are working on it, but it's a pretty fierce problem.
+              </p>
+              <p style="margin-bottom: 12px;">
+                Now, Apple's strategy is really simple. What we want to do is put an incredibly great computer in a book that you carry around with you, that you can learn how to use in twenty minutes. That's what we want to do. And we want to do it this decade. And we really want to do it with a radio link in it so you don't have to hook up to anything—you're in communication with all these larger databases and other computers. We don't know how to do that now. It's impossible technically.
+              </p>
+              <p style="margin-bottom: 12px;">
+                We're trying to get away from programming. We've got to get away from programming because people don't want to program computers. People want to use computers.
+              </p>
+              <p style="margin-bottom: 12px;">
+                We [at Apple] feel that, for some crazy reason, we're in the right place at the right time to put something back. And what I mean by that is, most of us didn't make the clothes we're wearing, and we didn't cook or grow the food that we eat, and we're speaking a language that was developed by other people, and we use a mathematics that was developed by other people. We are constantly taking.
+              </p>
+              <p style="margin-bottom: 12px;">
+                And the ability to put something back into the pool of human experience is extremely neat. I think that everyone knows that in the next ten years we have the chance to really do that. And we [will] look back—and while we're doing it, it's pretty fun, too—we will look back and say, "God, we were a part of that!"
+              </p>
+              <p style="margin-bottom: 12px;">
+                We started with nothing. So whenever you start with nothing, you can always shoot for the moon. You have nothing to lose. And the thing that happens is—when you sort of get something, it's very easy to go into cover-your-ass mode, and then you become conservative and vote for Ronnie. So what we're trying to do is to realize the very amazing time that we're in and not go into that mode.
+              </p>
+              <p style="margin-bottom: 12px;">
+                I can't tell you why you need a home computer right now. I mean, people ask me, "Why should I buy a computer in my home?"
+              </p>
+              <p style="margin-bottom: 12px;">
+                And I say, "Well, to learn about it, to run some fun simulations. If you've got some kids, they should probably know about it in terms of literacy. They can probably get some good educational software, especially if they're younger.
+              </p>
+              <p style="margin-bottom: 12px;">
+                You can hook up to the source and, you know, do whatever you're going to do. Meet women, I don't know. But other than that, there's no good reason to buy one for your house right now. But there will be. There will be."
+              </p>
+              <p style="margin-bottom: 12px;">
+                I don't think finance is what drives people at Apple. I don't think it's money, but feeling like you own a piece of the company, and this is your damn company, and if you see something … We always tell people, "You work for Apple first and your boss second." We feel pretty strongly about that.
+              </p>
+              <p>
+                When you have a million people using something, then that's when creativity really starts to happen on a very rapid scale. […] We need some revolutions like [the] Lisa [computer], but we also then need to get millions of units out there and let the world innovate—because the world's pretty good at innovating, we've found.
+              </p>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Each model has a token limit—from thousands to millions—which determines how much context it can remember and use.
+          </p>
+        </div>
+
+        <!-- Latent space -->
+        <div class="glossary-item" id="latent-space">
+          <h2 class="glossary-term-title">Latent space</h2>
+          <p class="glossary-term-description">
+            Latent space is an internal map where the model organizes learned knowledge. Similar concepts cluster together, creating groups of related ideas.
+          </p>
+          <div class="glossary-visualization" style="padding: 40px;">
+            <div class="latent-space-grid" id="latent-space-grid">
+              <!-- Dots will be generated by JavaScript for better animation -->
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Each point represents an embedding, positioned near similar concepts. This organization helps the model efficiently understand relationships and find connections.
+          </p>
+        </div>
+
+        <!-- Neural network -->
+        <div class="glossary-item" id="neural-network">
+          <h2 class="glossary-term-title">Neural network</h2>
+          <p class="glossary-term-description">
+            A neural network is a system of interconnected layers that learns from examples. Each layer processes information, extracting increasingly complex patterns to recognize images, understand language, and perform tasks.
+          </p>
+          <div class="glossary-visualization">
+            <div class="neural-network-visualization">
+              <div class="network-layer" data-layer-name="Input Layer">
+                <div class="network-node" data-node-info="Input: Processes the question">Q</div>
+              </div>
+              <div class="network-arrow"></div>
+              <div class="network-layer" data-layer-name="Hidden Layers">
+                <div class="network-node" data-node-info="Layer 1: Extracts basic features">L1</div>
+                <div class="network-node" data-node-info="Layer 2: Combines patterns">L2</div>
+                <div class="network-node" data-node-info="Layer 3: Forms complex understanding">L3</div>
+              </div>
+              <div class="network-arrow"></div>
+              <div class="network-layer" data-layer-name="Output Layer">
+                <div class="network-node" data-node-info="Output: Generates the answer">A</div>
+              </div>
+            </div>
+            <div style="margin-top: 20px; text-align: center; padding: 16px; background: #fafafa; border-radius: 8px;">
+              <div style="font-size: 14px; color: #000; margin-bottom: 8px; font-weight: 500;">What's the capital of France?</div>
+              <div style="font-size: 16px; color: #0089FF; font-weight: 600;">Paris</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Information flows through layers, getting refined at each step. Early layers detect simple features, while deeper layers combine them into complex patterns, transforming questions into answers.
+          </p>
+          <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+            <a href="https://playground.tensorflow.org/" target="_blank" rel="noopener noreferrer" style="color: #0089FF; text-decoration: underline;">TensorFlow Playground</a>, an interactive visual demonstration that shows how neural networks learn and process information through their layers
+          </p>
+        </div>
+
+        <!-- Parameter -->
+        <div class="glossary-item" id="parameter">
+          <h2 class="glossary-term-title">Parameter</h2>
+          <p class="glossary-term-description">
+            Parameters are numerical values the model learns during training. They control how network parts connect and respond, collectively defining the model's knowledge and behavior.
+          </p>
+          <div class="glossary-visualization">
+            <div class="parameter-visualization">
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+              <div class="parameter-dot"></div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Each parameter influences how the model processes data. More parameters (billions or trillions) often enable more complex patterns, though training data quality also matters.
+          </p>
+          <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+            <a href="https://www.youtube.com/watch?v=8P7f4o_1VxY" target="_blank" rel="noopener noreferrer" style="color: #0089FF; text-decoration: underline;">Understanding Model Parameters: 8B vs 70B Explained</a>, a clear explanation of what parameter counts mean and how they affect model performance
+          </p>
+        </div>
+
+        <!-- Model -->
+        <div class="glossary-item" id="model">
+          <h2 class="glossary-term-title">Model</h2>
+          <p class="glossary-term-description">
+            An AI model is a system trained on large amounts of data that learns patterns and relationships. Once trained, it can make predictions, generate content, or understand new information.
+          </p>
+          <div class="glossary-visualization">
+            <div class="model-examples">
+              <div class="model-example">
+                <div class="model-example-question">Why do leaves change color in autumn?</div>
+                <div class="model-example-answer">Because trees stop producing chlorophyll as light decreases.</div>
+              </div>
+              <div class="model-example">
+                <div class="model-example-question">Describe this image of a sunrise.</div>
+                <div class="model-example-answer">A bright orange sunrise above calm mountains.</div>
+              </div>
+              <div class="model-example">
+                <div class="model-example-question">Translate 'Bonjour' to English.</div>
+                <div class="model-example-answer">'Bonjour' means 'Hello.'</div>
+              </div>
+              <div class="model-example">
+                <div class="model-example-question">Summarize this article about space travel.</div>
+                <div class="model-example-answer">The article explains how private companies are advancing space exploration.</div>
+              </div>
+              <div class="model-example">
+                <div class="model-example-question">Predict tomorrow's weather in Paris.</div>
+                <div class="model-example-answer">Partly cloudy with mild temperatures around 18°C.</div>
+              </div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            A trained neural network that recognizes patterns and relationships, enabling it to make predictions or generate new content.
+          </p>
+          <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+            <a href="https://models.dev" target="_blank" rel="noopener noreferrer" style="color: #0089FF; text-decoration: underline;">models.dev</a>, a comprehensive directory of available AI models and development tools
+          </p>
+        </div>
+
+        <!-- Transformer -->
+        <div class="glossary-item" id="transformer">
+          <h2 class="glossary-term-title">Transformer</h2>
+          <p class="glossary-term-description">
+            A Transformer processes all words in a text simultaneously, not sequentially. This parallel processing helps it understand word relationships across the entire text, improving context understanding.
+          </p>
+          <div class="glossary-visualization">
+            <div class="transformer-visualization" id="transformer-viz">
+              <span class="transformer-word" data-attention-info="Processes all words\nsimultaneously">Why</span>
+              <span class="transformer-word" data-attention-info="Connects to 'sky'\nand 'orange'">does</span>
+              <span class="transformer-word" data-attention-info="Common word\nlow attention">the</span>
+              <span class="transformer-word" data-attention-info="Key word\nhigh attention">sky</span>
+              <span class="transformer-word" data-attention-info="Connects to 'orange'\nand 'sun'">turn</span>
+              <span class="transformer-word" data-attention-info="Key word\nhigh attention">orange</span>
+              <span class="transformer-word" data-attention-info="Connects to 'sun'\nand 'sets'">when</span>
+              <span class="transformer-word" data-attention-info="Common word\nlow attention">the</span>
+              <span class="transformer-word" data-attention-info="Key word\nhigh attention">sun</span>
+              <span class="transformer-word" data-attention-info="Connects to 'sun'\nand 'orange'">sets</span>
+            </div>
+            <div style="text-align: center; margin-top: 16px; padding: 12px; background: #fafafa; border-radius: 8px;">
+              <div style="font-size: 12px; color: #777; margin-bottom: 4px;">Hover over words to see attention connections</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Transformers understand connections across entire sentences or documents, not just neighboring words—like reading a whole page at once instead of word by word.
+          </p>
+          <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+            <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer" style="color: #0089FF; text-decoration: underline;">Attention Is All You Need (Vaswani et al., 2017)</a>, the groundbreaking research paper that introduced the Transformer architecture
+          </p>
+        </div>
+
+        <!-- Attention -->
+        <div class="glossary-item" id="attention">
+          <h2 class="glossary-term-title">Attention</h2>
+          <p class="glossary-term-description">
+            Attention determines which words are most important for understanding meaning. Each word "pays attention" to others and assigns greater weight to relevant ones, helping the model focus on what matters.
+          </p>
+          <div class="glossary-visualization">
+            <div class="transformer-visualization">
+              <span class="transformer-word">Why</span>
+              <span class="transformer-word">does</span>
+              <span class="transformer-word">the</span>
+              <span class="transformer-word">sky</span>
+              <span class="transformer-word">turn</span>
+              <span class="transformer-word">orange</span>
+              <span class="transformer-word">when</span>
+              <span class="transformer-word">the</span>
+              <span class="transformer-word">sun</span>
+              <span class="transformer-word">sets</span>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Attention identifies crucial words and relationships, highlighting what's most relevant rather than treating all words equally.
+          </p>
+        </div>
+
+        <!-- Pre-training -->
+        <div class="glossary-item" id="pre-training">
+          <h2 class="glossary-term-title">Pre-training</h2>
+          <p class="glossary-term-description">
+            Pre-training is the initial phase where a model learns from vast amounts of text data, building a foundation of language patterns, context, and general knowledge.
+          </p>
+          <div class="glossary-visualization" style="padding: 32px;">
+            <div class="pre-training-visualization" id="pre-training-viz">
+              <span class="pre-training-word">dataset</span>
+              <span class="pre-training-word">pattern</span>
+              <span class="pre-training-word">vector</span>
+              <span class="pre-training-word">embedding</span>
+              <span class="pre-training-word">gradient</span>
+              <span class="pre-training-word">context</span>
+              <span class="pre-training-word">sequence</span>
+              <span class="pre-training-word">probability</span>
+              <span class="pre-training-word">attention</span>
+              <span class="pre-training-word">feature</span>
+              <span class="pre-training-word">signal</span>
+              <span class="pre-training-word">batch</span>
+              <span class="pre-training-word">layer</span>
+              <span class="pre-training-word">activation</span>
+              <span class="pre-training-word">noise</span>
+              <span class="pre-training-word">objective</span>
+              <span class="pre-training-word">corpus</span>
+              <span class="pre-training-word">sample</span>
+              <span class="pre-training-word">loss</span>
+              <span class="pre-training-word">metric</span>
+              <span class="pre-training-word">iteration</span>
+              <span class="pre-training-word">alignment</span>
+              <span class="pre-training-word">concept</span>
+              <span class="pre-training-word">meaning</span>
+              <span class="pre-training-word">structure</span>
+              <span class="pre-training-word">syntax</span>
+              <span class="pre-training-word">semantic</span>
+              <span class="pre-training-word">knowledge</span>
+              <span class="pre-training-word">generalize</span>
+              <span class="pre-training-word">token</span>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Pre-training builds a foundation of general knowledge, so the model can learn specific tasks faster by building on existing knowledge rather than starting from scratch.
+          </p>
+        </div>
+
+        <!-- Fine-tuning -->
+        <div class="glossary-item" id="fine-tuning">
+          <h2 class="glossary-term-title">Fine-tuning</h2>
+          <p class="glossary-term-description">
+            Fine-tuning trains a pre-trained model further on specialized data. It keeps general knowledge but learns to apply it in focused ways for specific tasks or domains.
+          </p>
+          <div class="glossary-visualization">
+            <div class="fine-tuning-visualization">
+              <div class="fine-tuning-before">
+                <div style="font-size: 14px; color: #777;">the color of this image is good</div>
+              </div>
+              <div class="fine-tuning-arrow">→</div>
+              <div class="fine-tuning-after">
+                <div style="font-size: 14px; color: #000; font-weight: 500;">Fine-tune</div>
+              </div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Fine-tuning adds specialized skills (like design terminology or medical language) while preserving general knowledge—like teaching technical jargon to someone who already speaks English.
+          </p>
+        </div>
+
+        <!-- Reinforcement learning -->
+        <div class="glossary-item" id="reinforcement-learning">
+          <h2 class="glossary-term-title">Reinforcement learning</h2>
+          <p class="glossary-term-description">
+            Reinforcement learning trains models through feedback loops. The model tries actions, receives rewards or penalties, and learns which actions lead to better outcomes over time.
+          </p>
+          <div class="glossary-visualization">
+            <div class="reinforcement-visualization">
+              <div class="rl-step">
+                <span style="font-weight: 600; color: #000;">Model</span>
+              </div>
+              <div style="color: #0089FF;">↓</div>
+              <div class="rl-step">
+                <span style="font-weight: 600; color: #000;">Response</span>
+              </div>
+              <div style="color: #0089FF;">↓</div>
+              <div class="rl-step">
+                <span style="font-weight: 600; color: #000;">Feedback</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Through iterative trying, feedback, and learning from mistakes, the model gradually improves—similar to how humans learn.
+          </p>
+          <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+            <a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener noreferrer" style="color: #0089FF; text-decoration: underline;">Training language models to follow instructions with human feedback (Ouyang et al., 2022)</a>, the research paper that demonstrated how reinforcement learning from human feedback improves AI model behavior
+          </p>
+        </div>
+
+        <!-- Chain of thought -->
+        <div class="glossary-item" id="chain-of-thought">
+          <h2 class="glossary-term-title">Chain of thought</h2>
+          <p class="glossary-term-description">
+            Chain of thought shows the model's step-by-step reasoning. Instead of jumping to answers, it breaks problems into smaller steps, making the process transparent and often more accurate.
+          </p>
+          <div class="glossary-visualization">
+            <div class="chain-of-thought">
+              <div style="font-size: 14px; color: #000; margin-bottom: 16px; font-weight: 500;">
+                How wide should a poster be if it follows the golden ratio and its height is 60 cm?
+              </div>
+              <div class="chain-step">
+                <div class="chain-step-title">Step 1: Recall the ratio</div>
+                <div class="chain-step-content">The golden ratio ≈ 1.618.</div>
+              </div>
+              <div class="chain-step">
+                <div class="chain-step-title">Step 2: Apply the formula</div>
+                <div class="chain-step-content">Width = height × 1.618.</div>
+              </div>
+              <div class="chain-step">
+                <div class="chain-step-title">Step 3: Round and interpret</div>
+                <div class="chain-step-content">Width = 60 × 1.618 = 97.08 cm ≈ 97 cm</div>
+              </div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Chain of thought makes reasoning visible and often improves accuracy by forcing systematic thinking rather than guessing.
+          </p>
+          <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+            <a href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener noreferrer" style="color: #0089FF; text-decoration: underline;">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (Wei et al., 2022)</a>, the research that introduced and demonstrated the effectiveness of chain-of-thought reasoning
+          </p>
+        </div>
+
+        <!-- Inference -->
+        <div class="glossary-item" id="inference">
+          <h2 class="glossary-term-title">Inference</h2>
+          <p class="glossary-term-description">
+            Inference is when a trained model uses its knowledge to generate responses. It predicts one token at a time, using each prediction to inform the next until completing the output.
+          </p>
+          <div class="glossary-visualization">
+            <div class="inference-visualization">
+              <div class="inference-step">Why do leaves change color in autumn?</div>
+              <div style="color: #0089FF;">↓</div>
+              <div class="inference-step">Because trees stop producing chlorophyll...</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Inference happens every time you interact with AI—the model processes your input and generates a response token by token.
+          </p>
+        </div>
+
+        <!-- RAG -->
+        <div class="glossary-item" id="rag">
+          <h2 class="glossary-term-title">RAG (Retrieval-Augmented Generation)</h2>
+          <p class="glossary-term-description">
+            RAG (Retrieval-Augmented Generation) lets models search and retrieve information from external sources before generating answers, providing more accurate and up-to-date responses.
+          </p>
+          <div class="glossary-visualization">
+            <div class="rag-visualization">
+              <div class="rag-step-row">
+                <div class="rag-box" data-step-info="Step 1: User asks a question\nThis is the input query">
+                  <div class="rag-box-title">Query</div>
+                  <div class="rag-box-description">User's question</div>
+                </div>
+              </div>
+              <div class="rag-arrow-down">↓</div>
+              <div class="rag-step-row">
+                <div class="rag-box" data-step-info="Step 2: Search external sources\nFinds relevant documents">
+                  <div class="rag-box-title">Retrieval</div>
+                  <div class="rag-box-description">Search documents</div>
+                </div>
+              </div>
+              <div class="rag-arrow-down">↓</div>
+              <div class="rag-step-row">
+                <div class="rag-box" data-step-info="Step 3: Combine query + documents\nModel processes both">
+                  <div class="rag-box-title">Augmentation</div>
+                  <div class="rag-box-description">Combine context</div>
+                </div>
+              </div>
+              <div class="rag-arrow-down">↓</div>
+              <div class="rag-step-row">
+                <div class="rag-box" data-step-info="Step 4: Generate final answer\nUsing retrieved information">
+                  <div class="rag-box-title">Generation</div>
+                  <div class="rag-box-description">Generate answer</div>
+                </div>
+              </div>
+            </div>
+            <div style="text-align: center; margin-top: 16px; padding: 12px; background: #fafafa; border-radius: 8px;">
+              <div style="font-size: 12px; color: #777; margin-bottom: 4px;">Hover over each step to see details</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            RAG powers AI assistants that search the web or databases. The system retrieves relevant information first, then combines it with the model's training to generate better answers.
+          </p>
+          <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+            <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener noreferrer" style="color: #0089FF; text-decoration: underline;">Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (Lewis et al., 2020)</a>, the original research paper that introduced the RAG approach
+          </p>
+        </div>
+
+        <!-- Agent -->
+        <div class="glossary-item" id="agent">
+          <h2 class="glossary-term-title">Agent</h2>
+          <p class="glossary-term-description">
+            An AI agent is an autonomous system that independently plans, takes actions, and accomplishes tasks. Unlike simple chatbots, agents use tools, learn from feedback, remember interactions, and adapt to achieve goals.
+          </p>
+          <div class="glossary-visualization">
+            <div class="agent-visualization">
+              <div class="agent-component">Agent</div>
+              <div style="color: #0089FF;">↓</div>
+              <div class="agent-component">Goal</div>
+              <div style="color: #0089FF;">↓</div>
+              <div class="agent-component">Plan</div>
+              <div style="color: #0089FF;">↓</div>
+              <div class="agent-component">Actions</div>
+              <div style="color: #0089FF;">↓</div>
+              <div class="agent-component">Environment</div>
+              <div style="color: #0089FF;">↓</div>
+              <div class="agent-component">Tools</div>
+              <div style="color: #0089FF;">↓</div>
+              <div class="agent-component">Memory</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Agents operate independently, breaking tasks into steps, executing them, evaluating results, and adjusting strategy—all without constant human intervention.
+          </p>
+          <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+            <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer" style="color: #0089FF; text-decoration: underline;">Building effective agents, Engineering at Anthropic</a>, a comprehensive guide on how to design and build effective AI agents
+          </p>
+        </div>
+
+        <!-- Workflow -->
+        <div class="glossary-item" id="workflow">
+          <h2 class="glossary-term-title">Workflow</h2>
+          <p class="glossary-term-description">
+            A workflow is a structured sequence of steps that accomplish a task. Each step takes the previous output, processes it, and passes results to the next, creating a predictable path.
+          </p>
+          <div class="glossary-visualization">
+            <div class="workflow-visualization">
+              <div class="workflow-step">Collect</div>
+              <div class="workflow-arrow">→</div>
+              <div class="workflow-step">Process</div>
+              <div class="workflow-arrow">→</div>
+              <div class="workflow-step">Generate</div>
+              <div class="workflow-arrow">→</div>
+              <div class="workflow-step">Deliver</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            Workflows organize complex processes into connected steps, making them easier to understand, maintain, and optimize.
+          </p>
+        </div>
+
+        <!-- LLM -->
+        <div class="glossary-item" id="llm">
+          <h2 class="glossary-term-title">LLM (Large Language Model)</h2>
+          <p class="glossary-term-description">
+            An LLM (Large Language Model) is a large neural network trained on vast amounts of text. It learns language nuances, predicts next words, and generates coherent, contextually appropriate text.
+          </p>
+          <div class="glossary-visualization">
+            <div class="llm-visualization" id="llm-visualization">
+              <!-- Words will be generated by JavaScript for multilingual visualization -->
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: #777;">
+            LLMs power modern AI assistants, chatbots, and language systems. Their ability to understand context, generate human-like text, and work across languages makes them versatile.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="mx-auto max-w-prose py-16" style="margin-top: 96px;">
+        <div class="footer-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; margin-bottom: 48px;">
+          <div>
+            <h3 class="text-lg font-medium text-slate-900 mb-3">Samet Özkale</h3>
+            <p class="text-sm leading-relaxed" style="color: #777;">
+              Product Designer & Entrepreneur
+            </p>
+            <p class="text-sm leading-relaxed mt-2" style="color: #777;">
+              Creating meaningful and purpose-driven products and designs.
+            </p>
+          </div>
+          <a 
+            href="https://cal.com/sametozkale/meetwithme" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="book-call-button"
+            style="flex-shrink: 0;"
+          >
+            Work with me
+          </a>
+        </div>
+        
+        <div class="footer-columns" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px 32px; margin-bottom: 48px;">
+          <div>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">Work</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="/mues-ai" class="text-sm transition-colors" style="color: #777;">Mues AI</a>
+              </li>
+              <li>
+                <a href="/roadmape" class="text-sm transition-colors" style="color: #777;">Roadmape</a>
+              </li>
+              <li>
+                <a href="/producter" class="text-sm transition-colors" style="color: #777;">Producter</a>
+              </li>
+              <li>
+                <a href="/heybooster" class="text-sm transition-colors" style="color: #777;">Heybooster</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">About</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="/about" class="text-sm transition-colors" style="color: #777;">About</a>
+              </li>
+              <li>
+                <a href="https://cal.com/sametozkale/meetwithme" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">Work with me</a>
+              </li>
+              <li>
+                <a href="/cv.md" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">CV</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">Resources</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="/resources" class="text-sm transition-colors" style="color: #777;">Resources</a>
+              </li>
+              <li>
+                <a href="/photos" class="text-sm transition-colors" style="color: #777;">Photos</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7001170854449438720" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">Newsletter</a>
+              </li>
+              <li>
+                <a href="/books" class="text-sm transition-colors" style="color: #777;">Books</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-sm font-medium text-slate-900" style="margin-bottom: 12px;">Connect</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="mailto:ozkalesamet@gmail.com" class="text-sm transition-colors" style="color: #777;">Email</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/sametozkale" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">LinkedIn</a>
+              </li>
+              <li>
+                <a href="https://x.com/sametozkale" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">X / Twitter</a>
+              </li>
+              <li>
+                <a href="https://layers.to/samet" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: #777;">Portfolio</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="pt-8 border-t border-gray-200">
+          <p class="text-sm" style="color: #777;">© Samet Özkale 2025 · Made with love.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="/" class="bottom-nav-item" data-page="home">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="14" height="14" rx="4" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Home</span>
+      </a>
+      <a href="/about" class="bottom-nav-item" data-page="about">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="7" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">About</span>
+      </a>
+      <a href="/photos" class="bottom-nav-item" data-page="photos">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="14" height="14" rx="4" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Photos</span>
+      </a>
+      <a href="/resources" class="bottom-nav-item" data-page="resources">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="7" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Resources</span>
+      </a>
+      <a href="/books" class="bottom-nav-item" data-page="books">
+        <span class="bottom-nav-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="7" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-text">Books</span>
+      </a>
+    </nav>
+
+    <script>
+      // Glossary term navigation
+      (function() {
+        const sidebarButtons = document.querySelectorAll('.glossary-sidebar-btn');
+        const glossaryItems = document.querySelectorAll('.glossary-item');
+
+        // Update active sidebar button based on scroll position
+        function updateActiveSidebarButton() {
+          const scrollPosition = window.scrollY + 200;
+          
+          glossaryItems.forEach((item, index) => {
+            const rect = item.getBoundingClientRect();
+            const itemTop = rect.top + window.scrollY;
+            const itemBottom = itemTop + rect.height;
+            
+            if (scrollPosition >= itemTop && scrollPosition < itemBottom) {
+              const termId = item.id;
+              sidebarButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-term') === termId) {
+                  btn.classList.add('active');
+                }
+              });
+            }
+          });
+        }
+
+        sidebarButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const term = this.getAttribute('data-term');
+            const targetItem = document.getElementById(term);
+            
+            if (targetItem) {
+              // Update active button
+              sidebarButtons.forEach(btn => btn.classList.remove('active'));
+              this.classList.add('active');
+              
+              // Scroll to target
+              const offsetTop = targetItem.offsetTop - 120;
+              window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+
+        // Update active button on scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(updateActiveSidebarButton, 100);
+        });
+
+        // Initialize active button
+        updateActiveSidebarButton();
+
+        // Intersection Observer for glossary items - smooth scroll-triggered animations
+        const itemObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              // Add staggered animation to child elements
+              const childElements = entry.target.querySelectorAll('.token-item, .embedding-word, .latent-word, .pre-training-word, .llm-word');
+              childElements.forEach((el, index) => {
+                setTimeout(() => {
+                  el.style.opacity = '1';
+                  el.style.transform = 'translateY(0) scale(1)';
+                }, index * 20);
+              });
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        glossaryItems.forEach((item) => {
+          itemObserver.observe(item);
+        });
+
+        // Parameter dots staggered animation
+        const parameterViz = document.querySelector('.parameter-visualization');
+        if (parameterViz) {
+          const dots = parameterViz.querySelectorAll('.parameter-dot');
+          dots.forEach((dot, index) => {
+            dot.style.animationDelay = `${index * 0.015}s`;
+          });
+        }
+
+        // Tokenization functionality - OpenAI Tokenizer style
+        const tokenizationInput = document.getElementById('tokenization-input');
+        const tokenizationResult = document.getElementById('tokenization-result');
+        
+        function tokenizeText(text) {
+          if (!text.trim()) {
+            tokenizationResult.innerHTML = '<div style="color: #999; font-size: 14px;">Enter text to see tokens</div>';
+            return;
+          }
+          
+          // Simple tokenization simulation - split by spaces and punctuation
+          // In reality, OpenAI uses BPE (Byte Pair Encoding) which is more complex
+          const tokens = [];
+          let currentToken = '';
+          let tokenId = 1;
+          
+          // Split text into tokens (simplified version - real tokenization is more complex)
+          // This is a basic simulation that splits on spaces and punctuation
+          const words = text.split(/(\s+|[.,!?;:])/);
+          
+          words.forEach((word, index) => {
+            if (word.trim()) {
+              // For longer words, split them into subwords (simulating BPE)
+              if (word.length > 6 && !word.match(/^[.,!?;:\s]+$/)) {
+                // Split long words into smaller chunks
+                const chunks = word.match(/.{1,6}/g) || [word];
+                chunks.forEach((chunk, chunkIndex) => {
+                  tokens.push({
+                    text: chunk,
+                    id: tokenId++,
+                    isSubword: chunkIndex > 0
+                  });
+                });
+              } else {
+                tokens.push({
+                  text: word,
+                  id: tokenId++,
+                  isSubword: false
+                });
+              }
+            }
+          });
+          
+          // Clear and render tokens
+          tokenizationResult.innerHTML = '';
+          
+          if (tokens.length === 0) {
+            tokenizationResult.innerHTML = '<div style="color: #999; font-size: 14px;">No tokens found</div>';
+            return;
+          }
+          
+          tokens.forEach((token, index) => {
+            const tokenEl = document.createElement('span');
+            tokenEl.className = 'tokenization-token';
+            if (token.isSubword) {
+              tokenEl.classList.add('subword');
+            }
+            tokenEl.textContent = token.text;
+            
+            // Create detailed token info for hover
+            const tokenType = token.isSubword ? 'Subword token' : 'Word token';
+            const tokenInfo = `${tokenType}\nToken ID: ${token.id}\nLength: ${token.text.length} chars`;
+            tokenEl.setAttribute('data-token-info', tokenInfo);
+            
+            // Enhanced animation with slide-in effect
+            tokenEl.style.opacity = '0';
+            tokenEl.style.transform = 'translateY(10px) scale(0.9)';
+            tokenEl.style.animation = `tokenizeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.02}s both`;
+            
+            tokenizationResult.appendChild(tokenEl);
+          });
+          
+          // Add tokenize animation keyframes if not exists
+          if (!document.getElementById('tokenize-animation-style')) {
+            const tokenizeStyle = document.createElement('style');
+            tokenizeStyle.id = 'tokenize-animation-style';
+            tokenizeStyle.textContent = `
+              @keyframes tokenizeIn {
+                0% {
+                  opacity: 0;
+                  transform: translateY(12px) scale(0.88);
+                }
+                50% {
+                  transform: translateY(-3px) scale(1.05);
+                }
+                100% {
+                  opacity: 1;
+                  transform: translateY(0) scale(1);
+                }
+              }
+            `;
+            document.head.appendChild(tokenizeStyle);
+          }
+        }
+        
+        if (tokenizationInput && tokenizationResult) {
+          // Initial tokenization
+          tokenizeText(tokenizationInput.value);
+          
+          // Tokenize on input
+          tokenizationInput.addEventListener('input', function() {
+            tokenizeText(this.value);
+          });
+          
+          // Tokenize on paste
+          tokenizationInput.addEventListener('paste', function() {
+            setTimeout(() => {
+              tokenizeText(this.value);
+            }, 10);
+          });
+        }
+
+        // Embedding button functionality - improved animation
+        const embedBtn = document.getElementById('embed-btn');
+        const embeddingViz = document.getElementById('embedding-visualization');
+        
+        if (embedBtn && embeddingViz) {
+          let hasEmbedded = false;
+          
+          // Add click state styling
+          embedBtn.addEventListener('mousedown', function() {
+            this.style.transform = 'scale(0.95)';
+          });
+          embedBtn.addEventListener('mouseup', function() {
+            this.style.transform = 'scale(1)';
+          });
+          embedBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+          });
+          embedBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+          });
+          
+          embedBtn.addEventListener('click', function() {
+            if (hasEmbedded) {
+              // Reset animation
+              const words = embeddingViz.querySelectorAll('.embedding-word');
+              words.forEach(word => {
+                word.classList.remove('embedded', 'grouped');
+                word.style.animation = 'none';
+                setTimeout(() => {
+                  word.style.animation = 'fadeIn 0.5s ease forwards';
+                }, 10);
+              });
+              hasEmbedded = false;
+              this.textContent = 'Embed';
+              return;
+            }
+            
+            const words = embeddingViz.querySelectorAll('.embedding-word');
+            
+            // Group similar words (like "neutral", "elements", "actions", "states")
+            const groups = {
+              neutral: ['neutral'],
+              elements: ['elements', 'button', 'layout'],
+              actions: ['actions', 'adapts'],
+              states: ['states', 'hovered', 'mobile'],
+              common: ['the', 'when', 'and', 'on', 'devices', 'slides']
+            };
+            
+            words.forEach((word, index) => {
+              const wordText = word.textContent.trim();
+              let groupClass = '';
+              let similarWords = [];
+              
+              // Find which group this word belongs to and get similar words
+              for (const [groupName, groupWords] of Object.entries(groups)) {
+                if (groupWords.includes(wordText)) {
+                  groupClass = 'grouped';
+                  similarWords = groupWords.filter(w => w !== wordText);
+                  break;
+                }
+              }
+              
+              // Set similar words info for hover
+              if (similarWords.length > 0) {
+                word.setAttribute('data-similar-words', `Similar words:\n${similarWords.slice(0, 3).join(', ')}${similarWords.length > 3 ? '...' : ''}`);
+              } else {
+                word.setAttribute('data-similar-words', 'Embedded into\nvector space');
+              }
+              
+              setTimeout(() => {
+                word.classList.add('embedded');
+                if (groupClass) {
+                  word.classList.add(groupClass);
+                }
+                
+                // Add a subtle pulse animation
+                word.style.animation = `embedPulse 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
+              }, index * 25);
+            });
+            
+            hasEmbedded = true;
+            this.textContent = 'Reset';
+          });
+        }
+        
+        // Add embed pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes embedPulse {
+            0% {
+              opacity: 0;
+              transform: scale(0.75) translateY(5px);
+            }
+            50% {
+              transform: scale(1.12) translateY(-2px);
+            }
+            100% {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
+          }
+        `;
+        document.head.appendChild(style);
+
+        // Latent space grid generation with animation
+        const latentSpaceGrid = document.getElementById('latent-space-grid');
+        if (latentSpaceGrid) {
+          // Words from reference site organized by concept
+          const latentWords = [
+            'light', 'shadow-sm', 'contrast', 'glow', 'reflection', 'brightness',
+            'shape', 'structure', 'balance', 'proportion', 'symmetry', 'geometry',
+            'texture', 'grain', 'surface', 'detail', 'material', 'roughness',
+            'color', 'tone', 'hue', 'gradient', 'saturation', 'palette',
+            'motion', 'rhythm', 'flow', 'timing', 'movement', 'pulse',
+            'depth', 'scale', 'distance', 'perspective', 'volume', 'dimension',
+            'layout', 'alignment', 'hierarchy', 'framing', 'spacing', 'ratio',
+            'warmth', 'clarity', 'focus',
+            'paper', 'glass', 'fabric', 'metal', 'stone', 'clay',
+            'tone', 'silence', 'resonance', 'rhythm', 'echo', 'frequency',
+            'calm', 'tension', 'serenity', 'focus', 'joy', 'silence',
+            'tool', 'hand', 'process', 'repetition', 'mastery', 'patience',
+            'idea', 'thought', 'abstraction', 'symbol', 'meaning', 'intent',
+            'stone', 'water', 'wind', 'light', 'growth', 'decay',
+            'echo', 'trace', 'layer', 'time', 'fragment', 'recall',
+            'warmth', 'stillness', 'tension', 'empathy', 'rhythm', 'precision',
+            'patience', 'hand', 'repetition', 'flow', 'simplicity', 'clarity',
+            'balance', 'detail', 'reduction',
+            'type', 'weight', 'rhythm', 'kerning', 'leading', 'grid',
+            'harmony', 'dissonance', 'balance', 'emphasis', 'unity',
+            'edge', 'corner', 'curve', 'bevel', 'chamfer', 'fillet',
+            'story', 'intent', 'context', 'metaphor', 'theme',
+            'tempo', 'duration', 'cadence', 'loop', 'drift',
+            'matte', 'gloss', 'patina', 'polish', 'wear'
+          ];
+          
+          // Add words with enhanced staggered animation
+          latentWords.forEach((word, index) => {
+            const wordEl = document.createElement('span');
+            wordEl.className = 'latent-word';
+            wordEl.textContent = word;
+            
+            // Enhanced animation with random delay for more organic feel
+            const baseDelay = index * 0.012;
+            const randomDelay = Math.random() * 0.015;
+            wordEl.style.animationDelay = `${(baseDelay + randomDelay)}s`;
+            wordEl.style.animation = `latentWordFadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
+            
+            // Add subtle random positioning for more organic layout
+            const randomX = (Math.random() - 0.5) * 4;
+            const randomY = (Math.random() - 0.5) * 4;
+            wordEl.style.setProperty('--random-x', `${randomX}px`);
+            wordEl.style.setProperty('--random-y', `${randomY}px`);
+            
+            latentSpaceGrid.appendChild(wordEl);
+          });
+          
+          // Add some dots for visual richness with enhanced animation
+          const dotCount = 60;
+          for (let i = 0; i < dotCount; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'latent-dot';
+            const delay = (latentWords.length * 0.012 + i * 0.006);
+            dot.style.animationDelay = `${delay}s`;
+            dot.style.animation = `latentDotFadeIn 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
+            
+            // Random size variation for visual interest
+            const size = 6 + Math.random() * 4;
+            dot.style.width = `${size}px`;
+            dot.style.height = `${size}px`;
+            
+            latentSpaceGrid.appendChild(dot);
+          }
+          
+          // Add latent space animation keyframes
+          if (!document.getElementById('latent-animation-style')) {
+            const latentStyle = document.createElement('style');
+            latentStyle.id = 'latent-animation-style';
+            latentStyle.textContent = `
+              @keyframes latentWordFadeIn {
+                0% {
+                  opacity: 0;
+                  transform: translate(0, 12px) scale(0.75);
+                }
+                50% {
+                  transform: translate(0, -2px) scale(1.05);
+                }
+                100% {
+                  opacity: 1;
+                  transform: translate(var(--random-x, 0), var(--random-y, 0)) scale(1);
+                }
+              }
+              @keyframes latentDotFadeIn {
+                0% {
+                  opacity: 0;
+                  transform: scale(0);
+                }
+                50% {
+                  transform: scale(1.8);
+                  opacity: 0.7;
+                }
+                100% {
+                  opacity: 0.5;
+                  transform: scale(1);
+                }
+              }
+            `;
+            document.head.appendChild(latentStyle);
+          }
+        }
+
+        // Pre-training word animation - improved with continuous animation
+        const preTrainingViz = document.getElementById('pre-training-viz');
+        if (preTrainingViz) {
+          const words = preTrainingViz.querySelectorAll('.pre-training-word');
+          
+          // Initial staggered fade-in animation
+          words.forEach((word, index) => {
+            word.style.animation = `preTrainFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.025}s both`;
+            
+            // Enhanced hover effect
+            word.addEventListener('mouseenter', function() {
+              this.style.transform = 'translateY(-2px) scale(1.05)';
+              this.style.zIndex = '10';
+            });
+            word.addEventListener('mouseleave', function() {
+              this.style.transform = 'translateY(0) scale(1)';
+              this.style.zIndex = '1';
+            });
+          });
+          
+          // Add subtle continuous animation for visual interest
+          let animationPhase = 0;
+          setInterval(() => {
+            animationPhase++;
+            words.forEach((word, index) => {
+              // Random subtle movement every few seconds
+              if (Math.random() > 0.95) {
+                word.style.transition = 'transform 0.3s ease';
+                word.style.transform = `translateY(${(Math.random() - 0.5) * 2}px)`;
+                setTimeout(() => {
+                  word.style.transform = 'translateY(0)';
+                }, 300);
+              }
+            });
+          }, 2000);
+        }
+
+        // LLM multilingual visualization - enhanced animation
+        const llmViz = document.getElementById('llm-visualization');
+        if (llmViz) {
+          // English words
+          const englishWords = ['text', 'question', 'answer', 'idea', 'summary', 'story', 'code', 'translation', 'context', 'reasoning', 'language', 'knowledge', 'prompt', 'response', 'user', 'system', 'client', 'server', 'database', 'algorithm', 'function', 'parameter', 'variable'];
+          // Chinese words (simplified)
+          const chineseWords = ['文本', '问题', '答案', '想法', '总结', '故事', '代码', '翻译', '上下文', '推理', '语言', '知识', '提示', '响应', '用户', '系统', '客户端', '服务器', '数据库', '算法', '函数', '参数', '变量'];
+          // Japanese words
+          const japaneseWords = ['テキスト', '質問', '回答', 'アイデア', '要約', '物語', 'コード', '翻訳', '文脈', '推論', '言語', '知識', 'プロンプト', '応答', 'ユーザー', 'システム', 'クライアント', 'サーバー', 'データベース', 'アルゴリズム', '関数', 'パラメータ', '変数'];
+          // French words
+          const frenchWords = ['texte', 'question', 'réponse', 'idée', 'résumé', 'histoire', 'code', 'traduction', 'contexte', 'raisonnement', 'langue'];
+          
+          const allWords = [...englishWords, ...chineseWords, ...japaneseWords, ...frenchWords];
+          
+          // Group words by language for visual distinction
+          const languageGroups = {
+            english: englishWords,
+            chinese: chineseWords,
+            japanese: japaneseWords,
+            french: frenchWords
+          };
+          
+          allWords.forEach((word, index) => {
+            const wordEl = document.createElement('span');
+            wordEl.className = 'llm-word';
+            wordEl.textContent = word;
+            
+            // Determine language group for styling
+            let langGroup = 'english';
+            if (chineseWords.includes(word)) langGroup = 'chinese';
+            else if (japaneseWords.includes(word)) langGroup = 'japanese';
+            else if (frenchWords.includes(word)) langGroup = 'french';
+            
+            wordEl.setAttribute('data-lang', langGroup);
+            wordEl.style.animation = `llmWordFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.018}s both`;
+            
+            // Enhanced hover effect with language-based styling
+            wordEl.addEventListener('mouseenter', function() {
+              this.style.transform = 'translateY(-4px) scale(1.08)';
+              this.style.transition = 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)';
+              this.style.background = 'linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%)';
+              this.style.borderColor = '#0089FF';
+              this.style.zIndex = '10';
+              this.style.fontWeight = '600';
+            });
+            wordEl.addEventListener('mousedown', function() {
+              this.style.transform = 'translateY(-1px) scale(1.04)';
+              this.style.background = 'linear-gradient(135deg, #e0f0ff 0%, #d0e9fc 100%)';
+            });
+            wordEl.addEventListener('mouseup', function() {
+              this.style.transform = 'translateY(-4px) scale(1.08)';
+              this.style.background = 'linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%)';
+            });
+            wordEl.addEventListener('mouseleave', function() {
+              this.style.transform = 'translateY(0) scale(1)';
+              this.style.background = 'white';
+              this.style.borderColor = '#e5e7eb';
+              this.style.zIndex = '1';
+              this.style.fontWeight = '500';
+            });
+            
+            llmViz.appendChild(wordEl);
+          });
+          
+          // Add LLM word animation keyframes
+          if (!document.getElementById('llm-animation-style')) {
+            const llmStyle = document.createElement('style');
+            llmStyle.id = 'llm-animation-style';
+            llmStyle.textContent = `
+              @keyframes llmWordFadeIn {
+                0% {
+                  opacity: 0;
+                  transform: translateY(18px) rotate(-3deg) scale(0.9);
+                }
+                50% {
+                  transform: translateY(-3px) rotate(2deg) scale(1.05);
+                }
+                100% {
+                  opacity: 1;
+                  transform: translateY(0) rotate(0deg) scale(1);
+                }
+              }
+            `;
+            document.head.appendChild(llmStyle);
+          }
+        }
+
+        // Set active page for bottom navigation
+        const currentPath = window.location.pathname;
+        const navItems = document.querySelectorAll('.bottom-nav-item');
+        
+        navItems.forEach(item => {
+          const page = item.getAttribute('data-page');
+          item.classList.remove('active');
+          
+          if (currentPath === '/ai-glossary') {
+            // No active item for glossary page
+          } else if (currentPath === '/' && page === 'home') {
+            item.classList.add('active');
+          } else if (currentPath === '/about' && page === 'about') {
+            item.classList.add('active');
+          } else if (currentPath === '/photos' && page === 'photos') {
+            item.classList.add('active');
+          } else if (currentPath === '/resources' && page === 'resources') {
+            item.classList.add('active');
+          } else if (currentPath === '/books' && page === 'books') {
+            item.classList.add('active');
+          }
+          
+          const iconSpan = item.querySelector('.bottom-nav-icon');
+          if (iconSpan) {
+            if (item.classList.contains('active')) {
+              iconSpan.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="14" height="14" rx="4" fill="currentColor"/></svg>';
+            } else {
+              iconSpan.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="7" fill="currentColor"/></svg>';
+            }
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
+
+

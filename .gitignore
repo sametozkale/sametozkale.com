@@ -8,9 +8,12 @@ output.css
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+server.log
 
 # VSCode settings folder
 .vscode/
 
 # macOS
 .DS_Store
+.DS_Store.env
+.env

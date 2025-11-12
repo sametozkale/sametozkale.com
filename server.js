@@ -6,14 +6,19 @@
 // 3.  Sends back the previous location, then overwrites lastVisitor.json with current
 // 4.  Serves your static files (index.html, mues-ai.html, etc.)
 
+require("dotenv").config();
 const express = require("express");
 const fs = require("fs").promises;
 const path = require("path");
+const { google } = require("googleapis");
 // Node.js 18+ has built-in fetch, no need for node-fetch
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const STORAGE_FILE = path.join(__dirname, "lastVisitor.json");
+
+// Middleware for parsing JSON bodies
+app.use(express.json());
 
 // Clean URL routes - define before static middleware
 app.get("/mues-ai", (req, res) => {
@@ -48,6 +53,10 @@ app.get("/books", (req, res) => {
   res.sendFile(path.join(__dirname, "books.html"));
 });
 
+app.get("/ai-glossary", (req, res) => {
+  res.sendFile(path.join(__dirname, "ai-glossary.html"));
+});
+
 // Serve your static site from a "public" folder
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -78,29 +87,90 @@ app.get("/", (req, res) => {
 
 app.get("/api/last-location", async (req, res) => {
   try {
-    // 1) Read the previous visitor’s location from disk (if it exists).
+    // 1) Read the previous visitor's location from disk (if it exists).
     let previous = { city: "unknown", region: "", country_name: "" };
     try {
       const data = await fs.readFile(STORAGE_FILE, "utf8");
       previous = JSON.parse(data);
     } catch (err) {
-      // If file doesn’t exist, we’ll just return "unknown"
+      // If file doesn't exist, we'll just return "unknown"
     }
 
-    // 2) Get the requester’s IP. In a production environment behind a load
+    // 2) Get the requester's IP. In a production environment behind a load
     //    balancer or reverse proxy, you may need req.headers["x-forwarded-for"]
     const visitorIp = req.headers["x-forwarded-for"] || req.ip;
     // 3) Call ipapi.co to look up the location for that IP
     const response = await fetch(`https://ipapi.co/${visitorIp}/json/`);
     const current = await response.json();
-    // 4) Store the “current” visitor’s location as JSON for next time
+    // 4) Store the "current" visitor's location as JSON for next time
     await fs.writeFile(STORAGE_FILE, JSON.stringify(current), "utf8");
 
-    // 5) Return the “previous” location to the client
+    // 5) Return the "previous" location to the client
     res.json(previous);
   } catch (err) {
     console.error("Error in /api/last-location:", err);
     res.status(500).json({ city: "unknown", region: "", country_name: "" });
+  }
+});
+
+app.post("/api/submit-email", async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email || !email.includes("@") || !email.includes(".")) {
+      return res.status(400).json({ error: "Invalid email format" });
+    }
+
+    // Google Sheets configuration
+    const SPREADSHEET_ID = process.env.GOOGLE_SHEET_ID || "";
+    const SHEET_NAME = process.env.SHEET_NAME || "Emails";
+
+    // If Google Sheets credentials are not configured, just log and return success
+    if (!SPREADSHEET_ID || !process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
+      console.log("Email received (Google Sheets not configured):", email);
+      console.log("SPREADSHEET_ID:", SPREADSHEET_ID ? "Set" : "Missing");
+      console.log("GOOGLE_SERVICE_ACCOUNT_KEY:", process.env.GOOGLE_SERVICE_ACCOUNT_KEY ? "Set" : "Missing");
+      return res.json({ success: true, message: "Email received" });
+    }
+
+    try {
+      // Parse service account key from environment variable
+      const serviceAccountKey = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
+      
+      // Authenticate with Google Sheets API
+      const auth = new google.auth.GoogleAuth({
+        credentials: serviceAccountKey,
+        scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+      });
+
+      const sheets = google.sheets({ version: "v4", auth });
+
+      // Append email to the sheet
+      const result = await sheets.spreadsheets.values.append({
+        spreadsheetId: SPREADSHEET_ID,
+        range: `${SHEET_NAME}!A:B`,
+        valueInputOption: "RAW",
+        insertDataOption: "INSERT_ROWS",
+        resource: {
+          values: [[email, new Date().toISOString()]],
+        },
+      });
+
+      console.log("Email saved to Google Sheets:", email);
+      console.log("Sheet update result:", result.data);
+      res.json({ success: true, message: "Email saved successfully" });
+    } catch (sheetsError) {
+      console.error("Error saving to Google Sheets:");
+      console.error("Error message:", sheetsError.message);
+      console.error("Error code:", sheetsError.code);
+      console.error("Error details:", sheetsError.response?.data || sheetsError);
+      // Still return success to allow user access
+      res.json({ success: true, message: "Email received (storage failed)" });
+    }
+  } catch (error) {
+    console.error("Error in /api/submit-email:", error);
+    // Return success anyway to allow access
+    res.json({ success: true, message: "Email received" });
   }
 });
 
