@@ -1,5 +1,5 @@
 {
-  "name": "sametozkale.com",
+  "name": "samet.works",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sametozkale/sametozkale.com.git"
+    "url": "git+https://github.com/sametozkale/samet.works.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sametozkale/sametozkale.com/issues"
+    "url": "https://github.com/sametozkale/samet.works/issues"
   },
-  "homepage": "https://github.com/sametozkale/sametozkale.com#readme",
+  "homepage": "https://github.com/sametozkale/samet.works#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
